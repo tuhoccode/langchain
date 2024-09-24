@@ -1,0 +1,26 @@
+<!-- card_item.html -->
+{% macro card_item(url, image, price, title, author, sold) %}
+<div class="col data-item">
+    <a href="{{ url }}" class="no-underline">
+        <div class="card">
+            <img src="{{ url_for('static', filename=image) }}" class="img-fluid" alt="{{ title }}">
+            <div class="card-body">
+                <p class="card-text text-danger">
+                    <i class="fa-solid fa-dollar-sign"></i>
+                    <button type="button" class="btn position-relative me-5 text-danger ">
+                        <h3>{{ price }}</h3>
+                    </button>
+                </p>
+                <h5 class="card-title">{{ title }}</h5> <!-- Hiển thị tiêu đề -->
+                <p class="card-text">{{ author }}</p>
+                <p class="card-text text-danger">
+                    {% for _ in range(5) %}
+                        <i class="fa-solid fa-star"></i>
+                    {% endfor %}
+                    <span class="text-secondary"> Đã bán {{ sold }}</span>
+                </p>
+            </div>
+        </div>
+    </a>
+</div>
+{% endmacro %}

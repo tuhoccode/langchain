@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} RECOMMENT BOOK {%endblock%}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+{% block content %} {%endblock%}
+  <header>
+
+
+
+    <div class="container">
+      <div class="row mt-5">
+        <!-- trang chu -->
+        <div class="col-2 pe-2">
+            <a class="text-dark" href="/home"><span><h1><i class="fa-solid fa-bars"></i></h1></span></a>
+          </div>
+        <!-- the loai -->
+        <div class="col-2">
+          <span id="toggleSpan">
+            <h1><i class="fa-solid fa-list-check"></i></h1>
+          </span>
+          <ul class="no-underline text-b" id="menu">
+            <li><a href="#" class="no-underline text-b text-dark" data-category="fiction">Fiction</a></li>
+            <li><a href="#" class="no-underline text-b text-dark" data-category="non-fiction">Non-Fiction</a></li>
+            <li><a href="#" class="no-underline text-b text-dark" data-category="academic" >Academic</a></li>
+            <li><a href="#" class="no-underline text-b text-dark" data-category="reference">Reference</a></li>
+            <li><a href="#" class="no-underline text-b text-dark" data-category="literature">Literature</a></li>
+            <li><a href="#" class="no-underline text-b text-dark" data-category="children">Children’s Books</a></li>
+            <li><a href="#" class="no-underline text-b text-dark" data-category="self-help">Self-Help</a></li>
+         </ul>
+        </div>
+
+    
+
+         <!-- data gia re -->
+        <div class="col-2"><a class="text-dark" href="https://vpndata.vn/#/login"><span><h1><i class="fa-solid fa-plane-up"></i></h1></span></a></div>
+          <!-- docx -->
+        <div class="col-2"><a class="text-dark" href="/doc"><span><h1><i class="fa-solid fa-file"></i></h1></span></a></div><!-- ho tro -->
+        <div class="col-2">
+          <a class="text-dark" href="https://zalo.me/0383092564"><span><h1><i class="fa-solid fa-info"></i></h1></span></a>
+        </div>
+        <!-- log out  -->
+        <div class="col-2 text-center">
+          {% block awesome%} <a class="text-danger" href="/logout"><span><h1><i class="fa-solid fa-right-to-bracket"></i></h1></span></a>{%endblock%}
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-11 text-center">
+          <form id="searchForm" action="/submit" method="POST" class="d-flex my-4">
+              <input class="form-control me-2" type="text" name="summary" placeholder="Nhập tóm tắt sách..." aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Tìm kiếm</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="result">
+        <!-- Kết quả tìm kiếm sẽ được hiển thị ở đây -->
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          const span = document.getElementById('toggleSpan');
+          const menu = document.getElementById('menu');
+
+          // Hiện menu khi nhấp vào span
+          span.addEventListener('click', () => {
+              const isMenuVisible = menu.style.display === 'block';
+              menu.style.display = isMenuVisible ? 'none' : 'block'; // Hiển thị/ẩn menu tùy thuộc vào trạng thái hiện tại
+          });
+
+          // Ẩn menu khi nhấp ra ngoài menu và span
+          document.addEventListener('click', (event) => {
+              if (!span.contains(event.target) && !menu.contains(event.target)) {
+                  menu.style.display = 'none';
+              }
+          });
+      });
+  </script>
+
+  <script>
+    $(document).ready(function() {
+        $('#searchForm').on('submit', function(event) {
+            event.preventDefault(); // Ngăn chặn hành động mặc định của biểu mẫu
+
+            $.ajax({
+                type: 'POST',
+                url: '/submit',
+                data: $(this).serialize(), // Gửi dữ liệu từ biểu mẫu
+                success: function(response) {
+                    const searchTerm = response.title.toLowerCase(); // Giả sử response trả về title
+                    let found = false;
+
+                    $('.data-item').each(function() {
+                        const cardTitle = $(this).find('.card-title').text().trim().toLowerCase();
+
+                        if (cardTitle.includes(searchTerm)) {
+                            $(this).show(); // Hiển thị thẻ nếu tiêu đề khớp
+                            found = true;
+                        } else {
+                            $(this).hide(); // Ẩn thẻ nếu tiêu đề không khớp
+                        }
+                    });
+
+                    if (!found) {$('#result').html('<p>Không tìm thấy tiêu đề nào khớp.</p>'); // Hiển thị thông báo nếu không tìm thấy tiêu đề nào khớp
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Có lỗi xảy ra:', error);
+                }
+            });
+        });
+    });
+</script>
+
+
+
+
+
+    <!-- hang 1 -->
+    <div class="row data-item" id="book1">
+      <!-- 1 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="fiction">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Tuoi_tre_dang_gia_bao_nhieu'),'images/tuoitre.webp', '14', 'Tuổi Trẻ Đáng Giá Bao Nhiêu (Tái Bản 2021)', 'Rosie Nguyễn', '1999') }}
+      </div>
+      <!-- 2 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Bai_hoc_tk21'),'images/21 Bài Học Cho Thế Kỷ 21.webp', '14', '21 Bài Học Cho Thế Kỷ 21 (Tái Bản)', 'Yuval Noah Harari', '1999') }}
+      </div>
+      <!-- 3 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Ngyen_tac_48'),'images/48 Nguyên Tắc Chủ Chốt Của Quyền Lực (Tái Bản 2020).webp', '14', '48 Nguyên Tắc Chủ Chốt Của Quyền Lực', 'Robert Greene', '1999') }}
+      </div>
+      <!-- 4 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Tre_em_thong_minh_nho_dung_dan_cua_cha_me'),'images/90_ Trẻ Thông Minh Nhờ Cách Trò Chuyện Đúng Đắn Của Cha Mẹ (Tái Bản 2019).webp', '14', 'Trẻ Thông Minh Nhờ Đúng Đắn Của Cha Mẹ', 'Urako Kanamori', '1999') }}
+      </div>
+      <!-- 5 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.La_thu_999'),'images/999 Lá Thư Gửi Cho Chính Mình - Những Lá Thư Ấn Tượng Nhất (Phiên Bản Song Ngữ Trung - Việt).webp', '14', '999 Lá Thư Gửi Cho Chính Mình (Tái Bản)', 'Miêu Công Tử', '1999') }}
+      </div>
+      <!-- 6 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Roberto'),'images/2666 – Roberto Bolaño_ translated by Natasha Wimmer 2008 – 2666 Trần Tiễn Cao Đăng, Quân Khuê dịch 2020.jpg', '14', '2666 – Roberto Bolaño (Tái Bản 2006)', 'Tiễn Cao Đăng', '1999') }}
+      </div>
+    </div>
+
+    <br>
+      <!-- hang 2 -->
+    <div class="row data-item" id="book1">
+      <!-- 1 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}{{ card_item(url_for('user.Bien_moi_thu_thanh_tien'),'images/Biến Mọi Thứ Thành Tiền - Make Money.webp', '14', 'Biến Mọi Thứ Thành Tiền - Make Money', 'Anh Dũng Nguyễn', '1999') }}
+      </div>
+      <!-- 2 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Bi_mat_cua_thien_an'),'images/Bí Mật Của Phan Thiên Ân (Tái Bản 2023).webp', '14', 'Bí Mật Của Phan Thiên Ân (Tái Bản 2023)', 'Alan Phan', '1999') }}
+      </div>
+      <!-- 3 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Binh_tinh_khi_e'),'images/Bình Tĩnh Khi Ế, Mạnh Mẽ Khi Yêu - All The Rules - Tái Bản.webp', '14', 'Bình Tĩnh Khi Ế, Mạnh Mẽ Khi Yêu', 'Ellen Fein & Sherrie Schneider.', '1999') }}
+      </div>
+      <!-- 4 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Luyen_thi_thpt_quoc_gia_mon_toan'),'images/Bộ Đề Minh Họa Luyện Thi THPT Quốc Gia Môn Toán.webp', '14', 'Luyện Thi THPT Quốc Gia Môn Toán', 'NXB Thanh Niên', '1999') }}
+      </div>
+      <!-- 5 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Bo_sach_lam_giau'),'images/Bộ Sách Làm Giàu Từ Chứng Khoán (How To Make Money In Stock) Phiên Bản Mới + Hướng Dẫn Thực Hành Canslim Cho Người Mới Bắt Đầu (Bộ 2 Cuốn).webp', '14', 'Bộ Sách Làm Giàu Từ Chứng Khoán', 'William J. O Neil', '1999') }}
+      </div>
+      <!-- 6 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Cang_binh_tinh'),'images/Càng Bình Tĩnh Càng Hạnh Phúc.webp', '14', 'Càng Bình Tĩnh Càng Hạnh Phúc (Tái Bản)', 'Vãn Tình', '1999') }} 
+      </div>
+    </div>
+
+    <br>
+
+    <!-- hang 3 -->
+    <div class="row data-item" id="book1">
+      <!-- 1 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Cang_ki_luat'),'images/Càng Kỷ Luật, Càng Tự Do.webp', '14', 'Càng Kỷ Luật, Càng Tự Do (Tái Bản) ', 'Ca Tây', '1999') }}
+      </div>
+      <!-- 2 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Cay_cam_ngot'),'images/Cây Cam Ngọt Của Tôi.webp', '14', 'Cây Cam Ngọt Của Tôi', 'José Mauro de Vasconcelos', '1999') }}
+      </div>
+      <!-- 3 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}{{ card_item(url_for('user.Cay_chuoi'),'images/Cây Chuối Non Đi Giày Xanh (Bìa Mềm) - 2018.webp', '14', 'Cây Chuối Non Đi Giày Xanh (Bìa Mềm) - 2018', 'Nguyễn Nhật Ánh', '1999') }}
+      </div>
+      <!-- 4 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Chien_binh_cau_vong'),'images/Chiến Binh Cầu Vồng (Tái Bản 2020).webp', '14', 'Chiến Binh Cầu Vồng (Tái Bản 2020)', 'Andrea Hirata', '1999') }}
+      </div>
+      <!-- 5 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Cho_toi_xin_mot_ve_ve_tuoi_tho'),'images/Cho Tôi Xin Một Vé Đi Tuổi Thơ (Tái Bản 2023).webp', '14', 'Cho Tôi Xin Một Vé Đi Tuổi Thơ (Tái Bản 2023)', 'Nguyễn Nhật Ánh', '1999') }}
+      </div>
+      <!-- 6 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Chuyen_con_meo_day_hai_au_bay'),'images/Chuyện Con Mèo Dạy Hải Âu Bay (Tái Bản 2019).webp', '14', 'Chuyện Con Mèo Dạy Hải Âu Bay (Tái Bản 2019)', 'Luis Sepúlveda', '1999') }}
+      </div>
+    </div>
+
+    <br>
+
+    <!-- hang 4 -->
+    <div class="row data-item" id="book1">
+      <!-- 1 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Ban_do_may'),'images/Cloud Atlas – David Mitchell 2004 – Bản đồ mây – Nguyễn Thị Thanh Trúc dịch – 2016.jpeg', '14', 'Bản đồ mây (Tái Bản)', 'David Mitchell', '1999') }}
+      </div>
+      <!-- 2 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Co_hai_con_meo_ngoi_ben_cua_so'),'images/Có Hai Con Mèo Ngồi Bên Cửa Sổ (Tái Bản 2023).webp', '14', 'Có Hai Con Mèo Ngồi Bên Cửa Sổ ', 'Nguyễn Nhật Ánh', '1999') }}
+      </div>
+      <!-- 3 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Grammar_and_vocubulary'),'images/Combo Sách Destination - Grammar And Vocabulary with Answer Key - B1 + B2 + C1 And C2 (Bộ 3 Cuốn).webp', '14','Grammar And Vocabulary', 'Malcolm Mann', '1999') }}
+      </div>
+      <!-- 4 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Hoan_hao_ngon_ngu_co_the'),'images/Cuốn Sách Hoàn Hảo Về Ngôn Ngữ Cơ Thể (Tái Bản 2021).webp', '14', 'Hoàn Hảo Ngôn Ngữ Cơ Thể ', 'Barbara Pease', '1999') }}
+      </div>
+      <!-- 5 --><div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Dac_nhan_tam'),'images/Đắc Nhân Tâm (Tái Bản 2021).webp', '14', 'Đắc Nhân Tâm (Tái Bản 2021)', 'Dale Carnegie', '1999') }}
+      </div>
+      <!-- 6 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Dan_ong_sao_hoa_dan_ba_sao_kim'),'images/Đàn Ông Sao Hỏa Đàn Bà Sao Kim.webp', '14', 'Đàn Ông Sao Hỏa Đàn Bà Sao Kim', 'John Gray', '1999') }}
+      </div>
+    </div>
+
+    <br>
+
+    <!-- hang 5 -->
+    <div class="row data-item" id="book1">
+      <!-- 1 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Day_con_lam_giau'),'images/Dạy Con Làm Giàu 01_ Để Không Có Tiền Vẫn Tạo Ra Tiền (Tái Bản 2022).webp', '14', 'Dạy Con Làm Giàu (Tái Bản) 2010', 'Robert Toru Kiyosaki', '1999') }}
+      </div>
+      <!-- 2 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Dieu_ki_dieu_cua_tiem_tam_hoa'),'images/Điều Kỳ Diệu Của Tiệm Tạp Hóa Namiya (Tái Bản 2018).webp', '14', 'Điều Kỳ Diệu Của Tiệm Tạp Hóa Namiya', 'Higashino Keigo', '1999') }}
+      </div>
+      <!-- 3 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Di_tim_le_song'),'images/Đi Tìm Lẽ Sống (Tái Bản 2022).webp', '14', 'Đi Tìm Lẽ Sống (Tái Bản 2022-2024)', 'Viktor Frankl', '1999') }}
+      </div>
+      <!-- 4 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Dua_tre_hieu_chuyen_thuong_khong_co_keo_an'),'images/Đứa Trẻ Hiểu Chuyện Thường Không Có Kẹo Ăn.webp', '14', 'Đứa Trẻ Hiểu Chuyện Thường Không Có Kẹo Ăn', 'Nguyên Anh', '1999') }}
+      </div>
+      <!-- 5 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Thoat_den_phuong_tay'),'images/Exit West – Mohsin Hamid 2017 – Thoát đến Phương Tây – Dương Mạnh Hùng dịch 2019.jpg', '14', 'Thoát đến Phương Tây (Tái Bản)', 'Mohsin Hamid', '1999') }}
+      </div>
+      <!-- 6 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Ghi_chep_phap_y_nhung_cai_chet_bi_an'),'images/Ghi Chép Pháp Y - Những Cái Chết Bí Ẩn.webp', '14', 'Ghi Chép Pháp Y - Những Cái Chết Bí Ẩn', 'Lưu Hiển Huy', '1999') }}
+      </div>
+    </div><br>
+
+    <!-- hang 6 -->
+    <div class="row data-item" id="book1">
+      <!-- 1 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Gian'),'images/Giận (Tái Bản 2023).webp', '14', 'Giận (Tái Bản 2023) (Tái Bản 2024)', 'Thích Nhất Hạnh', '1999') }}
+      </div>
+      <!-- 2 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Giao_trinh_han_ngu_1'),'images/Giáo Trình Hán Ngữ 1 - Tập 1 - Quyển Thượng Phiên Bản Mới (Tái Bản 2022) (Tải App).webp', '14', 'Giáo Trình Hán Ngữ 1(Tái Bản 2022)', 'Dương Ký Châu', '1999') }}
+      </div>
+      <!-- 3 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Hanh_tinh_cua_mot_ke_nghi_nhieu'),'images/Hành Tinh Của Một Kẻ Nghĩ Nhiều.webp', '14', 'Hành Tinh Một Kẻ Nghĩ Nhiều', 'Nguyễn Đoàn Minh Thư', '1999') }}
+      </div>
+      <!-- 4 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Hieu_ve_trai_tim'),'images/Hiểu Về Trái Tim (Tái Bản 2023).webp', '14', 'Hiểu Về Trái Tim (Tái Bản 2023-2024)', 'Minh Niệm', '1999') }}
+      </div>
+      <!-- 5 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Hoang_tu_be'),'images/Hoàng Tử Bé (Tái Bản).webp', '14', 'Hoàng Tử Bé (Tái Bản)', 'Antoine de Saint-Exupéry', '1999') }}
+      </div>
+      <!-- 6 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Khi_hoi_tho_hoa_thinh_khong'),'images/Khi Hơi Thở Hóa Thinh Không (Tái Bản 2020).webp', '14', 'Khi Hơi Thở Hóa Thinh Không (Tái Bản 2020)', 'Paul Kalanithi', '1999') }}
+      </div>
+    </div>
+
+    <br>
+
+    <!-- hang 7 -->
+    <div class="row data-item" id="book1">
+      <!-- 1 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Khong_diet_khong_sinh_dung_so_hai'),'images/Không Diệt Không Sinh Đừng Sợ Hãi (Tái Bản 2022).webp', '14', 'Không Diệt Không Sinh Đừng Sợ Hãi', 'Thích Nhất Hạnh', '1999') }}
+      </div>
+      <!-- 2 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}{{ card_item(url_for('user.Khong_phai_soi_nhung_cung_dung_la_cuu'),'images/Không Phải Sói Nhưng Cũng Đừng Là Cừu.webp', '14', 'Không Phải Sói Nhưng Cũng Đừng Là Cừu', 'Lê Bảo Ngọc', '1999') }}
+      </div>
+      <!-- 3 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Khong_so_cham_chi_so_dung'),'images/Không Sợ Chậm Chỉ Sợ Dừng.webp', '14', 'Không Sợ Chậm Chỉ Sợ Dừng (Tái Bản 2022) ', 'Vãn Tình,', '1999') }}
+      </div>
+      <!-- 4 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Lam_ban_voi_bau_troi'),'images/Làm Bạn Với Bầu Trời - Bìa Cứng - Tặng Kèm Khung Hình Xinh Xắn.webp', '14', 'Làm Bạn Với Bầu Trời (Tái Bản 2022-2024)', 'Nguyễn Nhật Ánh', '1999') }}
+      </div>
+      <!-- 5 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Lincoln_o_coi_trung_am'),'images/Lincoln in the Bardo – George Saunders 2017 – Lincoln ở cõi trung ấm – Lan Young dịch 2021.jpg', '14', 'Lincoln ở cõi trung ấm (Tái Bản 2022)', 'George Saunders', '1999') }}
+      </div>
+      <!-- 6 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Luong_gioi'),'images/Middlesex – Jeffrey Eugenides 2002 – Lưỡng giới (Middlesex) – Zét Nguyễn dịch 2019.jpg', '14', 'Lưỡng giới (Middlesex) (Tái Bản 2022)', 'Jeffrey Eugenides ', '1999') }}
+      </div>
+    </div>
+
+    <br>
+
+    <!-- hang 8 -->
+    <div class="row data-item" id="book1">
+      <!-- 1 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Muon_kiep_nhan_sinh'),'images/Muôn Kiếp Nhân Sinh - Many Times, Many Lives.webp', '14', 'Muôn Kiếp Nhân Sinh', 'John Vu', '1999') }}
+      </div>
+      <!-- 2 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Muon_kiep_nhan_sinh_bia_cung'),'images/Muôn Kiếp Nhân Sinh - Many Times, Many Lives (Bìa Cứng).webp', '14', 'Muôn Kiếp Nhân Sinh(Bìa Cứng)', 'John Vu', '1999') }}
+      </div>
+      <!-- 3 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Muon_kiep_nhan_sinh_kho_nho'),'images/Muôn Kiếp Nhân Sinh - Many Times, Many Lives (Khổ Nhỏ).webp', '14', 'Muôn Kiếp Nhân Sinh(Khổ Nhỏ)', 'John Vu', '1999') }}
+      </div>
+      <!-- 4 --><div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Muon_kiep_nhan_sinh_tap_2'),'images/Muôn Kiếp Nhân Sinh - Many Times, Many Lives - Tập 2.webp', '14', 'Muôn Kiếp Nhân Sinh - Tập 2', 'John Vu', '1999') }}
+      </div>
+      <!-- 5 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Muon_kiep_nhan_sinh_tap_3'),'images/Muôn Kiếp Nhân Sinh - Many Times, Many Lives - Tập 3.webp', '14', 'Muôn Kiếp Nhân Sinh - Tập 3', 'John Vu', '1999') }}
+      </div>
+      <!-- 6 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Nguoi_ban_phi_thuong'),'images/My Brilliant Friend – Elena Ferrante_ translated by Ann Goldstein 2012 – Người bạn phi thường – Nguyễn Minh Nguyệt dịch 2021.jpg', '14', 'Người bạn phi thường', 'Elena Ferrante', '1999') }}
+      </div>
+    </div>
+
+    <br>
+
+    <!-- hang 9 -->
+    <div class="row data-item" id="book1">
+      <!-- 1 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Nguoi_dua_dieu'),'images/Người Đua Diều.webp', '14', 'Người Đua Diều (Tái Bản 2022)-2024', 'Khaled Hosseini', '1999') }}
+      </div>
+      <!-- 2 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Nguoi_giau_co_nhat_babylon'),'images/NgườI Giàu Có Nhất Thành Babylon (Tái Bản).webp', '14', 'NgườI Giàu Có Nhất Babylon', 'George Samuel Clason', '1999') }}
+      </div>
+      <!-- 3 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Ngu_phap_tieng_anh_danh_cho_hoc_sinh'),'images/Ngữ Pháp Tiếng Anh Dành Cho Học Sinh - Vở Bài Tập & Đáp Án (Tái Bản).webp', '14', 'Ngữ Pháp Tiếng Anh Dành Cho Học Sinh', 'Mai Lan Hương', '1999') }}
+      </div>
+      <!-- 4 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Nha_dau_tu_thong_minh'),'images/Nhà Đầu Tư Thông Minh (Tái Bản 2020).webp', '14', 'Nhà Đầu Tư Thông Minh (Tái Bản 2020-2024)', 'Benjamin Graham', '1999') }}
+      </div>
+      <!-- 5 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Nha_gia_kim'),'images/Nhà Giả Kim (Tái Bản 2020).webp', '14', 'Nhà Giả Kim (Tái Bản 2020) (Tái Bản)', 'Paulo Coelho', '1999') }}
+      </div><!-- 6 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Nhung_tu_nhan_cua_dia_ly'),'images/Những Tù Nhân Của Địa Lý.webp', '14', 'Những Tù Nhân Của Địa Lý (Tái Bản 2022)', 'Tim Marshall', '1999') }}
+      </div>
+    </div>
+
+    <br>
+
+    <!-- hang 10-->
+    <div class="row data-item" id="book1">
+      <!-- 1 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Nong_gian_la_ban_nang_tinh_lang_la_ban_linh'),'images/Nóng Giận Là Bản Năng, Tĩnh Lặng Là Bản Lĩnh (Tái Bản 2020).webp', '14', 'Nóng Giận Là Bản Năng - Tĩnh Lặng Là Bản Lĩnh', 'Mạc Thiên Tứ', '1999') }}
+      </div>
+      <!-- 2 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Nong_gian_la_ban_nang_tinh_lang_la_ban_linh'),'images/Nóng Giận Là Bản Năng, Tĩnh Lặng Là Bản Lĩnh (Tái Bản 2020).webp', '14', 'Nóng Giận Là Bản Năng - Tĩnh Lặng Là Bản Lĩnh', 'Mạc Thiên Tứ', '1999') }}
+      </div>
+      <!-- 3 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Pachinko'),'images/Pachinko – Min Jin Lee 2017 – Pachinko – Nguyễn Bích Lan dịch 2019.jpg', '14', 'Pachinko (Tái Bản) (Tái Bản)(Tái Bản)', 'Pachinko', '1999') }}
+      </div>
+      <!-- 4 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Payback_time'),'images/Payback Time - Ngày Đòi Nợ (Tái Bản 2022).webp', '14', 'Payback Time - Ngày Đòi Nợ (Tái Bản 2022)', 'Phil Town', '1999') }}
+      </div>
+      <!-- 5 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Saying_of_youth'),'images/saying_of_youth.jpeg', '14', 'Sayings Of Youth - Lời Nói Của Thanh Xuân', 'Đào Hoàng Diệu', '1999') }}
+      </div>
+      <!-- 6 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Su_im_lang_cua_bay_cuu'),'images/Sự Im Lặng Của Bầy Cừu (Tái Bản 2019).webp', '14', 'Sự Im Lặng Của Bầy Cừu (Tái Bản 2019)', 'Thomas Harris', '1999') }}
+      </div>
+    </div>
+
+    <br>
+
+    <!-- hang 11 -->
+    <div class="row data-item" id="book1">
+      <!-- 1 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}{{ card_item(url_for('user.Tam_li_hoc_toi_pham'),'images/Tâm Lý Học Tội Phạm - Phác Họa Chân Dung Kẻ Phạm Tội.webp', '14', 'Tâm Lý Học Tội Phạm', 'Diệp Hồng Vũ', '1999') }}
+      </div>
+      <!-- 2 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Tam_li_hoc_ve_tien'),'images/Tâm Lý Học Về Tiền.webp', '14', 'Tâm Lý Học Về Tiền', 'Morgan Housel', '1999') }}
+      </div>
+      <!-- 3 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Tenth_of_december'),'images/Tenth of December – George Saunders 2013 – Ngày mười tháng mười hai – Ngọc Trà, Triều Dương – Hương Thảo – Trần Hạnh dịch 2016.jpg', '14', 'Tenth of December', 'George Saunders', '1999') }}
+      </div>
+      <!-- 4 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Thao_tung_tam_li'),'images/Thao Túng Tâm Lý - Nhận Diện, Thức Tỉnh Và Chữa Lành Những Tổn Thương Tiềm Ẩn.webp', '14', 'Thao Túng Tâm Lý', 'Shannon Thomas', '1999') }}
+      </div>
+      <!-- 5 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Thay_doi_cuoc_song_so_hoc'),'images/Thay Đổi Cuộc Sống Với Nhân Số Học.webp', '14', 'Thay Đổi Cuộc Sống Số Học', 'David A Phillips', '1999') }}
+      </div>
+      <!-- 6 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.The_goldfinch'),'images/The Goldfinch – Donna Tartt 2013 – Con sẻ vàng – Nguyễn An Lý dịch 2017.jpg', '14', 'The Goldfinch (Tái Bản)', 'Donna Tartt', '1999') }}
+      </div>
+    </div>
+
+    <br>
+
+    <!-- hang 12 -->
+    <div class="row data-item" id="book1">
+      <!-- 1 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.The_savage_detectives'),'images/The Savage Detectives – Roberto Bolaño_ translated by Natasha Wimmer 2007 – Thám tử Hoang dã – Trần Tiễn Cao Đăng dịch 2023.jpeg', '14', 'The Savage Detectives', 'Roberto Bolaño', '1999') }}
+      </div>
+      <!-- 2 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Underground_railroad'),'images/The Underground Railroad – Colson Whitehead 2016 – Tuyến hỏa xa ngầm – Nguyễn Bích Lan dịch 2019.jpg', '14', 'Underground Railroad', 'Colson Whitehead', '1999') }}
+      </div>
+      <!-- 3 --><div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.The_year_of_magical_thinking'),'images/The Year of Magical Thinking – Joan Didion 2005 – Từ địa ngục trở về.jpg', '14', 'The Year of Magical Thinking', 'Joan Didion', '1999') }}
+      </div>
+      <!-- 4 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Thiet_ke_cuoc_doi_thinh_vuong'),'images/Thiết Kế Cuộc Đời Thịnh Vượng - Design A Prosperous Life (Tái Bản 2021).webp', '14', 'Thiết Kế Cuộc Đời Thịnh Vượng', 'Thai Pham', '1999') }}
+      </div>
+      <!-- 5 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Thiet_ke_cuoc_doi_thinh_vuong'),'images/Thiết Kế Cuộc Đời Thịnh Vượng - Design A Prosperous Life (Tái Bản 2021).webp', '14', 'Thiết Kế Cuộc Đời Thịnh Vượng', 'Thai Pham', '1999') }}
+      </div>
+      <!-- 6 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Think_and_grow_rich'),'images/Think And Grow Rich - Nghĩ Giàu Và Làm Giàu.webp', '14', 'Think And Grow Rich', 'Napoleon Hill', '1999') }}
+      </div>
+    </div>
+
+    <br>
+
+    <!-- hang 13 -->
+    <div class="row data-item" id="book1">
+      <!-- 1 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Tho_bay_mau_va_nhung_nguoi_nghi_no_la_ban'),'images/Thỏ Bảy Màu Và Những Người Nghĩ Nó Là Bạn (Tái Bản 2023).webp', '14', 'Thỏ Bảy Màu Và Những Người Nghĩ Nó Là Bạn', 'Thái Ngọc Huỳnh', '1999') }}
+      </div>
+      <!-- 2 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Thuat_thao_tung'),'images/Thuật Thao Túng - Góc Tối Ẩn Sau Mỗi Câu Nói.webp', '14', 'Thuật Thao Túng (Tái Bản)', 'Wladislaw Jachtchenko', '1999') }}
+      </div>
+      <!-- 3 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Tieng_han_tong_hop_cho_nguoi_viet_nam'),'images/Tiếng Hàn Tổng Hợp Dành Cho Người Việt Nam - Sơ Cấp 1 (Tái Bản 2023).webp', '14', 'Tiếng Hàn Tổng Hợp Dành Cho Người Việt Nam', 'Hang Rok', '1999') }}
+      </div>
+      <!-- 4 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}{{ card_item(url_for('user.Tri_tue_do_thai'),'images/Trí Tuệ Do Thái (Tái Bản 2022).webp', '14', 'Trí Tuệ Do Thái (Tái Bản 2022) (Tái Bản)', 'Alan', '1999') }}
+      </div>
+      <!-- 5 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Tri_tue_do_thai'),'images/Trí Tuệ Do Thái (Tái Bản 2022).webp', '14', 'Trí Tuệ Do Thái (Tái Bản 2022) (Tái Bản)', 'Eran Katz', '1999') }}
+      </div>
+      <!-- 6 -->
+      <div class="col-md-2 mb-4 data-item book" data-category="">
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Tri_tue_do_thai'),'images/Trí Tuệ Do Thái (Tái Bản 2022).webp', '14', 'Trí Tuệ Do Thái (Tái Bản 2022) (Tái Bản)', 'Eran Katz', '1999') }}
+      </div>
+      
+    </div>
+    <br>
+  </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuLinks = document.querySelectorAll('#menu a');
+        const books = document.querySelectorAll('.book');
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+
+                const category = link.getAttribute('data-category');
+
+                books.forEach(book => {
+                    if (category === 'all' || book.getAttribute('data-category') === category) {
+                        book.style.display = 'block';
+                    } else {
+                        book.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+<!-- css the loai -->
+<script>
+  $(document).ready(function() {
+      $('#toggleSpan').on('click', function() {
+          $(this).toggleClass('active');
+          $('#menu').slideToggle(); // Smooth toggle effect
+      });
+  });
+  </script>
+  
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

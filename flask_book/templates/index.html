@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Title Finder</title>
+</head>
+<body>
+    <h1>Find Book Title</h1>
+    <form action="/submit" method="post">
+        <label for="summary">Enter the book summary:</label>
+        <textarea id="summary" name="summary" rows="10" cols="50" required></textarea>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- Display result -->
+    <div id="result">
+        <h2>Result:</h2>
+        <p id="title"></p>
+    </div>
+    <!-- this paragrap use send formdata in server and not reload fage -->
+    <script>
+        // Handle form submission and display result
+        document.querySelector('form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const response = await fetch('/submit', {
+                method: 'POST',
+                body: formData
+            });
+            const data = await response.json();
+            document.getElementById('title').textContent = data.title;
+        });
+    </script>
+</body>
+</html>

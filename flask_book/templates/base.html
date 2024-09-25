@@ -70,25 +70,7 @@
     <div id="result">
         <!-- Kết quả tìm kiếm sẽ được hiển thị ở đây -->
     </div>
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-          const span = document.getElementById('toggleSpan');
-          const menu = document.getElementById('menu');
-
-          // Hiện menu khi nhấp vào span
-          span.addEventListener('click', () => {
-              const isMenuVisible = menu.style.display === 'block';
-              menu.style.display = isMenuVisible ? 'none' : 'block'; // Hiển thị/ẩn menu tùy thuộc vào trạng thái hiện tại
-          });
-
-          // Ẩn menu khi nhấp ra ngoài menu và span
-          document.addEventListener('click', (event) => {
-              if (!span.contains(event.target) && !menu.contains(event.target)) {
-                  menu.style.display = 'none';
-              }
-          });
-      });
-  </script>
+      
 
   <script>
     $(document).ready(function() {

@@ -6,7 +6,9 @@ from langchain.prompts import PromptTemplate
 from langchain_community.embeddings import HuggingFaceEmbeddings
 import pandas as pd
 from langchain.docstore.document import Document
-
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+import numpy as np
 class RecommentBook:
     def __init__(self, embedding_file, key, repo, csv_file, template):
         self.embedding = embedding_file
@@ -35,7 +37,7 @@ class RecommentBook:
         llm = HuggingFaceHub(
             huggingfacehub_api_token=self.key,
             repo_id=self.repo,
-            model_kwargs={'temperature': 0.01, 'max_length': 5000}
+            model_kwargs={'temperature': 1, 'max_length': 5000}
         )
         return llm
 
@@ -48,8 +50,33 @@ class RecommentBook:
         )
         return rag
 
+    # def find_title_summary(self, summary):
+    #     query_document = Document(page_content=summary)
+    #     result = self.db.similarity_search(query_document.page_content)
+    #     not_query = result[0].page_content if result else None
+    #     return self.summary_title.get(not_query, 'not found title')
+
     def find_title_summary(self, summary):
-        query_document = Document(page_content=summary)
-        result = self.db.similarity_search(query_document.page_content)
-        not_query = result[0].page_content if result else None
-        return self.summary_title.get(not_query, 'not found title')
+            # Thêm tóm tắt người dùng vào danh sách tài liệu
+            documents = [summary] + self.data['summary'].tolist()
+
+            # Sử dụng TF-IDF để chuyển đổi văn bản thành vector
+            vectorizer = TfidfVectorizer().fit_transform(documents)
+            vectors = vectorizer.toarray()
+
+            # Tính toán độ tương đồng cosine giữa tóm tắt người dùng và các tóm tắt trong dữ liệu
+            cosine_matrix = cosine_similarity(vectors)
+            similar_indices = cosine_matrix[0][1:]  # Lấy chỉ số độ tương đồng với các tóm tắt khác
+
+            # Tìm chỉ số của tóm tắt khớp tốt nhất
+            best_match_index = np.argmax(similar_indices)
+            best_match_score = similar_indices[best_match_index]
+
+            # Đặt ngưỡng cho độ tương đồng
+            threshold = 0.2  # Ngưỡng có thể điều chỉnh tùy theo yêu cầu
+
+            if best_match_score > threshold:  # Kiểm tra nếu có độ tương đồng
+                matching_summary = self.data['summary'].iloc[best_match_index]
+                return self.summary_title.get(matching_summary, 'not found title')
+
+            return 'not found title'

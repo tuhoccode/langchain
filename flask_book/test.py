@@ -1,27 +1,14 @@
-import pandas as pd
+from flask import Flask, Blueprint, render_template, redirect, url_for
 
-# Đọc file CSV
-df = pd.read_csv('/media/anh/428916C82C800CE5/langchain_final/flask_book/book_genre.csv')
+# Định nghĩa blueprint
 
-# Kiểm tra dữ liệu
-print(df.head())  # In ra 5 dòng đầu tiên để xác nhận dữ liệu
+app = Flask(__name__)
+@app.route('/')
+def index():
+    return render_template('index.html')
 
-# Tìm kiếm tiêu đề
-def find_title_by_summary(summary_to_find):
-    # Lọc các dòng có summary phù hợp
-    result = df[df['summary'].str.contains(summary_to_find, na=False)]
-    
-    if not result.empty:
-        return result['title'].tolist()  # Trả về danh sách tiêu đề
-    else:
-        return None
-
-# Ví dụ: Tìm kiếm bằng summary
-summary_to_search = "Trong quá trình trẻ trưởng thành những khi cha mẹ nặng lời"
-titles_found = find_title_by_summary(summary_to_search)
-
-if titles_found:
-    for title in titles_found:
-        print(f"Tiêu đề tìm thấy: {title}")
-else:
-    print("Không tìm thấy tiêu đề nào khớp.")
+@app.route('/21 Bài Học Cho Thế Kỷ 21 (Tái Bản)')
+def Bai_hoc_tk21():
+    return render_template('21 Bài Học Cho Thế Kỷ 21 (Tái Bản).html')
+if __name__ == '__main__':
+    app.run(debug=True)

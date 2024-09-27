@@ -11,3 +11,4 @@ openai
 flask
 flask_sqlalchemy
 pandas
+npm

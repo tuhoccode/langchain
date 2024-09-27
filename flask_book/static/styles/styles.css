@@ -44,3 +44,44 @@
 #toggleSpan.active + #menu {
     display: block; /* Show menu when toggle is active */
 }
+
+
+/* .carousel-3d-container {
+    perspective: 1000px;
+    overflow: hidden;
+    width: 100%; 
+    height: 400px; 
+}
+
+.carousel-3d-slider {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-3d-slide {
+    min-width: 300px; 
+    height: 100%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.carousel-3d-slide img {
+    width: 100%; 
+    height: auto; 
+    border-radius: 10px; 
+} */
+
+.hero{
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    overflow: hidden;
+
+}
+.hero .carousel{
+    width: 300px;
+    margin: 100px auto 0;
+    overflow: visible;
+}

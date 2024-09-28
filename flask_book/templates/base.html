@@ -71,31 +71,46 @@
     <div id="result">
         <!-- Kết quả tìm kiếm sẽ được hiển thị ở đây -->
     </div>
+
+  
       
 
     <div class="container">
-      <div class="container-item">
-        <div class="item item1">
+      <div class="container-itemg">
+
+        <p class="itemg itemg-1">Tuổi Trẻ Đáng Giá Bao Nhiêu</p>
+        <p class="itemg itemg-2" >21 Bài Học Cho Thế Kỷ 21</p>
+        <p class="itemg itemg-3" >48 Nguyên Tắc Chủ Chốt Của Quyền Lực</p>
+        <p class="itemg itemg-4" >Trẻ Thông Minh Nhờ Đúng Đắn Của Cha Mẹ</p>
+        <p class="itemg itemg-5" >999 Lá Thư Gửi Cho Chính Mình</p>
+      </div>
+        <div class="container-item">
+        <div class="item item-1 ">
           {% from 'card_item.html' import card_item %}
           {{ card_item(url_for('user.Tuoi_tre_dang_gia_bao_nhieu'),'images/tuoitre.webp', '14', 'Tuổi Trẻ Đáng Giá Bao Nhiêu (Tái Bản 2021)', 'Rosie Nguyễn', '1999') }}
         </div>
-        <div class="item item2">
+        <div class="item item-2">
           {% from 'card_item.html' import card_item %}
         {{ card_item(url_for('user.Bai_hoc_tk21'),'images/21 Bài Học Cho Thế Kỷ 21.webp', '14', '21 Bài Học Cho Thế Kỷ 21 (Tái Bản)', 'Yuval Noah Harari', '1999') }}
         </div>
-        <div class="item item3">
+        <div class="item item-3">
           {% from 'card_item.html' import card_item %}
         {{ card_item(url_for('user.Ngyen_tac_48'),'images/48 Nguyên Tắc Chủ Chốt Của Quyền Lực (Tái Bản 2020).webp', '14', '48 Nguyên Tắc Chủ Chốt Của Quyền Lực', 'Robert Greene', '1999') }}
         </div>
-        <div class="item item4">
+        <div class="item item-4">
           {% from 'card_item.html' import card_item %}
           {{ card_item(url_for('user.Tre_em_thong_minh_nho_dung_dan_cua_cha_me'),'images/90_ Trẻ Thông Minh Nhờ Cách Trò Chuyện Đúng Đắn Của Cha Mẹ (Tái Bản 2019).webp', '14', 'Trẻ Thông Minh Nhờ Đúng Đắn Của Cha Mẹ', 'Urako Kanamori', '1999') }}
         </div>
-        <div class="item item5">
+        <div class="item item-5">
           {% from 'card_item.html' import card_item %}
           {{ card_item(url_for('user.La_thu_999'),'images/999 Lá Thư Gửi Cho Chính Mình - Những Lá Thư Ấn Tượng Nhất (Phiên Bản Song Ngữ Trung - Việt).webp', '14', '999 Lá Thư Gửi Cho Chính Mình (Tái Bản)', 'Miêu Công Tử', '1999') }}
         </div>
-        <div class="item item6">
+        <div class="container-controls">
+        </div>
+      </div>
+    </div>
+
+        <!-- <div class="item item6">
           {% from 'card_item.html' import card_item %}
           {{ card_item(url_for('user.Roberto'),'images/2666 – Roberto Bolaño_ translated by Natasha Wimmer 2008 – 2666 Trần Tiễn Cao Đăng, Quân Khuê dịch 2020.jpg', '14', '2666 – Roberto Bolaño (Tái Bản 2006)', 'Tiễn Cao Đăng', '1999') }}
         </div>
@@ -123,18 +138,54 @@
             {% from 'card_item.html' import card_item %}
             {{ card_item(url_for('user.Cang_binh_tinh'),'images/Càng Bình Tĩnh Càng Hạnh Phúc.webp', '14', 'Càng Bình Tĩnh Càng Hạnh Phúc (Tái Bản)', 'Vãn Tình', '1999') }} 
         </div>
-        <div class="item item13"></div>
-        <div class="item item14"></div>
-        <div class="item item15"></div>
-        <div class="item item16"></div>
-        <div class="item item17"></div>
-        <div class="item item18"></div>
-        <div class="item item19"></div>
-        <div class="item item20"></div>
-        <div class="item item21"></div>
-        <div class="item item22"></div>
-        <div class="item item23"></div>
-        <div class="item item24"></div>
+        <div class="item item13">
+          {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Cang_ki_luat'),'images/Càng Kỷ Luật, Càng Tự Do.webp', '14', 'Càng Kỷ Luật, Càng Tự Do (Tái Bản) ', 'Ca Tây', '1999') }}
+        </div>
+        <div class="item item14">
+          {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Cay_cam_ngot'),'images/Cây Cam Ngọt Của Tôi.webp', '14', 'Cây Cam Ngọt Của Tôi', 'José Mauro de Vasconcelos', '1999') }}
+        </div>
+        <div class="item item15">
+          {% from 'card_item.html' import card_item %}
+          {{ card_item(url_for('user.Cay_chuoi'),'images/Cây Chuối Non Đi Giày Xanh (Bìa Mềm) - 2018.webp', '14', 'Cây Chuối Non Đi Giày Xanh (Bìa Mềm) - 2018', 'Nguyễn Nhật Ánh', '1999') }}
+        </div>
+        <div class="item item16">
+          {% from 'card_item.html' import card_item %}
+          {{ card_item(url_for('user.Chien_binh_cau_vong'),'images/Chiến Binh Cầu Vồng (Tái Bản 2020).webp', '14', 'Chiến Binh Cầu Vồng (Tái Bản 2020)', 'Andrea Hirata', '1999') }}
+        </div>
+        <div class="item item17">
+          {% from 'card_item.html' import card_item %}
+          {{ card_item(url_for('user.Cho_toi_xin_mot_ve_ve_tuoi_tho'),'images/Cho Tôi Xin Một Vé Đi Tuổi Thơ (Tái Bản 2023).webp', '14', 'Cho Tôi Xin Một Vé Đi Tuổi Thơ (Tái Bản 2023)', 'Nguyễn Nhật Ánh', '1999') }}
+        </div>
+        <div class="item item18">
+          {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Chuyen_con_meo_day_hai_au_bay'),'images/Chuyện Con Mèo Dạy Hải Âu Bay (Tái Bản 2019).webp', '14', 'Chuyện Con Mèo Dạy Hải Âu Bay (Tái Bản 2019)', 'Luis Sepúlveda', '1999') }}
+        </div>
+        <div class="item item19">
+          {% from 'card_item.html' import card_item %}
+          {{ card_item(url_for('user.Ban_do_may'),'images/Cloud Atlas – David Mitchell 2004 – Bản đồ mây – Nguyễn Thị Thanh Trúc dịch – 2016.jpeg', '14', 'Bản đồ mây (Tái Bản)', 'David Mitchell', '1999') }}
+        </div>
+        <div class="item item20">
+          {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Co_hai_con_meo_ngoi_ben_cua_so'),'images/Có Hai Con Mèo Ngồi Bên Cửa Sổ (Tái Bản 2023).webp', '14', 'Có Hai Con Mèo Ngồi Bên Cửa Sổ ', 'Nguyễn Nhật Ánh', '1999') }}
+        </div>
+        <div class="item item21">
+          {% from 'card_item.html' import card_item %}
+          {{ card_item(url_for('user.Grammar_and_vocubulary'),'images/Combo Sách Destination - Grammar And Vocabulary with Answer Key - B1 + B2 + C1 And C2 (Bộ 3 Cuốn).webp', '14','Grammar And Vocabulary', 'Malcolm Mann', '1999') }}
+        </div>
+        <div class="item item22">
+          {% from 'card_item.html' import card_item %}
+          {{ card_item(url_for('user.Hoan_hao_ngon_ngu_co_the'),'images/Cuốn Sách Hoàn Hảo Về Ngôn Ngữ Cơ Thể (Tái Bản 2021).webp', '14', 'Hoàn Hảo Ngôn Ngữ Cơ Thể ', 'Barbara Pease', '1999') }}
+        </div>
+        <div class="item item23">
+          {% from 'card_item.html' import card_item %}
+          {{ card_item(url_for('user.Dac_nhan_tam'),'images/Đắc Nhân Tâm (Tái Bản 2021).webp', '14', 'Đắc Nhân Tâm (Tái Bản 2021)', 'Dale Carnegie', '1999') }}
+        </div>
+        <div class="item item24">
+          {% from 'card_item.html' import card_item %}
+          {{ card_item(url_for('user.Dan_ong_sao_hoa_dan_ba_sao_kim'),'images/Đàn Ông Sao Hỏa Đàn Bà Sao Kim.webp', '14', 'Đàn Ông Sao Hỏa Đàn Bà Sao Kim', 'John Gray', '1999') }}
+        </div>
         <div class="item item25"></div>
         <div class="item item26"></div>
         <div class="item item27"></div>
@@ -212,7 +263,7 @@
         <div class="item item99"></div>
         <div class="item item100"></div>
       </div>
-    </div>
+    </div> -->
 
     <!-- hang 1 -->
     <div class="row data-item" id="book1">

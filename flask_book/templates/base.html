@@ -16,6 +16,7 @@
 <body>
 {% block content %} {%endblock%}
   <header>
+    
 
 
 
@@ -73,197 +74,55 @@
     </div>
 
   
-      
-
+    
     <div class="container">
       <div class="container-itemg">
+        <div class="recom"><h1>Sách Đề Xuất</h1></div>
+          <div class="itemg itemg-1"><h3>Tuổi Trẻ Đáng Giá Bao Nhiêu</h3>
+            <h5 class="text-content" >Nỗi cô đơn ở thời nào cũng đáng sợ, như một thứ bệnh khủng khiếp nhất. Cuốn tiểu thuyết mới nhất của Nguyễn Văn Học đã đề cập đến nỗi cô đơn vô hạn của những con người phải chống chọi với số phận nghiệt ngã. Toàn bộ cuốn sách 264 trang tràn ngập nỗi cô đơn và cách con người gồng mình để thoát khỏi điều đó. Tiểu thuyết Khi vết thương nằm xuống là tác phẩm viết về giới trẻ của nhà văn Nguyễn Văn Học. 
 
-        <p class="itemg itemg-1">Tuổi Trẻ Đáng Giá Bao Nhiêu</p>
-        <p class="itemg itemg-2" >21 Bài Học Cho Thế Kỷ 21</p>
-        <p class="itemg itemg-3" >48 Nguyên Tắc Chủ Chốt Của Quyền Lực</p>
-        <p class="itemg itemg-4" >Trẻ Thông Minh Nhờ Đúng Đắn Của Cha Mẹ</p>
-        <p class="itemg itemg-5" >999 Lá Thư Gửi Cho Chính Mình</p>
+              "Khi vết thương nằm xuống" với sức hấp dẫn, cuốn hút đặc biệt nhờ phần ngôn ngữ gọn, sắc lạnh.
+              
+              Thông qua cuộc đời nhiều khổ đau và khát vọng của nhân vật Kiêu, tác giả muốn đề cập tới thực trạng của nền giáo dục gia đình và xã hội đối với việc hình thành nhân cách con người. Trong một xã hội mà ý thức con người còn nhiều lạc hậu, thực dụng, nhiều kỳ thị, ít sự cảm thông… thì cái tốt xấu đan xen, dẫn tới nhiều bạo lực, hận thù, cạm bẫy, làm mất niềm tin ở thế hệ trẻ.
+              
+              Nguyễn Văn Học có những trang văn miêu tả dữ dội và trực diện về tâm lý con người và cái ác, bộc lộ những dự cảm chân thực về xã hội, cố gắng chạm sâu vào nỗi đau con người, đó đây lóe lên những phát hiện mới về tâm lý. Tác giả thể hiện nỗi buồn hoang hoải của con người, những vết thương tâm hồn bị khoét sâu cũng được đẩy đến tận cùng tâm can, tới đáy sâu nhất của tâm hồn mỗi người. Nhưng đằng sau những dòng văn thản nhiên ấy, vẫn ẩn chứa một tấm lòng nhân hậu và con mắt đau đáu của người viết dõi theo số phận con người, chia sẻ và đồng hành cùng họ. 
+              
+              Dù cuộc sống được mô tả trong tiểu thuyết có khốc liệt đến mấy, thì những trang văn của Nguyễn Văn Học cũng rất chân thật, thấm đẫm tình yêu thương con người. Việc thiết yếu cần làm là chữa lành vết thương cho tâm hồn con người. Phải xoa dịu để những vết thương ấy “nằm xuống”, ngủ yên, cho con người dũng cảm đi lên với cuộc đời mới. 
+              
+              Tác phẩm Khi vết thương nằm xuống đã mở ra niềm hy vọng: Dù cuộc đời gập ghềnh, gian khổ, nhưng luôn vẫn còn những con đường tốt lành cho mỗi người...</h6>  
+          </div>
+          <p class="itemg itemg-2">21 Bài Học Cho Thế Kỷ 21</p>
+          <p class="itemg itemg-3">48 Nguyên Tắc Chủ Chốt Của Quyền Lực</p>
+          <p class="itemg itemg-4">Trẻ Thông Minh Nhờ Đúng Đắn Của Cha Mẹ</p>
+          <p class="itemg itemg-5">999 Lá Thư Gửi Cho Chính Mình</p>
+          
+        </div>
+        <div class="bt-ds no-underline">
+          <a href="#" id="readLink" class="text-white" style="text-decoration: none;">Đọc Sách</a>
       </div>
-        <div class="container-item">
-        <div class="item item-1 ">
-          {% from 'card_item.html' import card_item %}
-          {{ card_item(url_for('user.Tuoi_tre_dang_gia_bao_nhieu'),'images/tuoitre.webp', '14', 'Tuổi Trẻ Đáng Giá Bao Nhiêu (Tái Bản 2021)', 'Rosie Nguyễn', '1999') }}
-        </div>
-        <div class="item item-2">
-          {% from 'card_item.html' import card_item %}
-        {{ card_item(url_for('user.Bai_hoc_tk21'),'images/21 Bài Học Cho Thế Kỷ 21.webp', '14', '21 Bài Học Cho Thế Kỷ 21 (Tái Bản)', 'Yuval Noah Harari', '1999') }}
-        </div>
-        <div class="item item-3">
-          {% from 'card_item.html' import card_item %}
-        {{ card_item(url_for('user.Ngyen_tac_48'),'images/48 Nguyên Tắc Chủ Chốt Của Quyền Lực (Tái Bản 2020).webp', '14', '48 Nguyên Tắc Chủ Chốt Của Quyền Lực', 'Robert Greene', '1999') }}
-        </div>
-        <div class="item item-4">
-          {% from 'card_item.html' import card_item %}
-          {{ card_item(url_for('user.Tre_em_thong_minh_nho_dung_dan_cua_cha_me'),'images/90_ Trẻ Thông Minh Nhờ Cách Trò Chuyện Đúng Đắn Của Cha Mẹ (Tái Bản 2019).webp', '14', 'Trẻ Thông Minh Nhờ Đúng Đắn Của Cha Mẹ', 'Urako Kanamori', '1999') }}
-        </div>
-        <div class="item item-5">
-          {% from 'card_item.html' import card_item %}
-          {{ card_item(url_for('user.La_thu_999'),'images/999 Lá Thư Gửi Cho Chính Mình - Những Lá Thư Ấn Tượng Nhất (Phiên Bản Song Ngữ Trung - Việt).webp', '14', '999 Lá Thư Gửi Cho Chính Mình (Tái Bản)', 'Miêu Công Tử', '1999') }}
-        </div>
-        <div class="container-controls">
-        </div>
-      </div>
-    </div>
+      
+      
+        <div class="container-item" style="margin-right: 200px;">
+          {% set items = [
+              {'url': url_for('user.Tuoi_tre_dang_gia_bao_nhieu'), 'image': 'images/tuoitre.webp', 'price': '14', 'title': 'Tuổi Trẻ Đáng Giá Bao Nhiêu (Tái Bản 2021)', 'author': 'Rosie Nguyễn', 'year': '1999'},
+              {'url': url_for('user.Bai_hoc_tk21'), 'image': 'images/21 Bài Học Cho Thế Kỷ 21.webp', 'price': '14', 'title': '21 Bài Học Cho Thế Kỷ 21 (Tái Bản)', 'author': 'Yuval Noah Harari', 'year': '1999'},
+              {'url': url_for('user.Ngyen_tac_48'), 'image': 'images/48 Nguyên Tắc Chủ Chốt Của Quyền Lực (Tái Bản 2020).webp', 'price': '14', 'title': '48 Nguyên Tắc Chủ Chốt Của Quyền Lực', 'author': 'Robert Greene', 'year': '1999'},
+              {'url': url_for('user.Tre_em_thong_minh_nho_dung_dan_cua_cha_me'), 'image': 'images/90_ Trẻ Thông Minh Nhờ Cách Trò Chuyện Đúng Đắn Của Cha Mẹ (Tái Bản 2019).webp', 'price': '14', 'title': 'Trẻ Thông Minh Nhờ Đúng Đắn Của Cha Mẹ', 'author': 'Urako Kanamori', 'year': '1999'},
+              {'url': url_for('user.La_thu_999'), 'image': 'images/999 Lá Thư Gửi Cho Chính Mình - Những Lá Thư Ấn Tượng Nhất (Phiên Bản Song Ngữ Trung - Việt).webp', 'price': '14', 'title': '999 Lá Thư Gửi Cho Chính Mình (Tái Bản)', 'author': 'Miêu Công Tử', 'year': '1999'},
+              ] %}
+              
+              {% for item in items %}
+              <div class="item item{{ loop.index }}">
+                {% from 'card_item.html' import card_item %}
+                {{ card_item(item.url, item.image, item.price, item.title, item.author, item.year) }}
+              </div>
+              {% endfor %}
+              <div class="container-controls"></div>
+            </div>
+  </div>
+  
 
-        <!-- <div class="item item6">
-          {% from 'card_item.html' import card_item %}
-          {{ card_item(url_for('user.Roberto'),'images/2666 – Roberto Bolaño_ translated by Natasha Wimmer 2008 – 2666 Trần Tiễn Cao Đăng, Quân Khuê dịch 2020.jpg', '14', '2666 – Roberto Bolaño (Tái Bản 2006)', 'Tiễn Cao Đăng', '1999') }}
-        </div>
-        <div class="item item7">
-          {{ card_item(url_for('user.Bien_moi_thu_thanh_tien'),'images/Biến Mọi Thứ Thành Tiền - Make Money.webp', '14', 'Biến Mọi Thứ Thành Tiền - Make Money', 'Anh Dũng Nguyễn', '1999') }}
-        </div>
-        <div class="item item8">
-          {% from 'card_item.html' import card_item %}
-          {{ card_item(url_for('user.Bi_mat_cua_thien_an'),'images/Bí Mật Của Phan Thiên Ân (Tái Bản 2023).webp', '14', 'Bí Mật Của Phan Thiên Ân (Tái Bản 2023)', 'Alan Phan', '1999') }}
-        </div>
-        <div class="item item9">
-          {% from 'card_item.html' import card_item %}
-          {{ card_item(url_for('user.Binh_tinh_khi_e'),'images/Bình Tĩnh Khi Ế, Mạnh Mẽ Khi Yêu - All The Rules - Tái Bản.webp', '14', 'Bình Tĩnh Khi Ế, Mạnh Mẽ Khi Yêu', 'Ellen Fein & Sherrie Schneider.', '1999') }}
-        </div>
-        <div class="item item10">
-          {% from 'card_item.html' import card_item %}
-          {{ card_item(url_for('user.Luyen_thi_thpt_quoc_gia_mon_toan'),'images/Bộ Đề Minh Họa Luyện Thi THPT Quốc Gia Môn Toán.webp', '14', 'Luyện Thi THPT Quốc Gia Môn Toán', 'NXB Thanh Niên', '1999') }}
-        </div>
-        <div class="item item11">
-          {% from 'card_item.html' import card_item %}
-          {{ card_item(url_for('user.Bo_sach_lam_giau'),'images/Bộ Sách Làm Giàu Từ Chứng Khoán (How To Make Money In Stock) Phiên Bản Mới + Hướng Dẫn Thực Hành Canslim Cho Người Mới Bắt Đầu (Bộ 2 Cuốn).webp', '14', 'Bộ Sách Làm Giàu Từ Chứng Khoán', 'William J. O Neil', '1999') }}
-        </div>
-        <div class="item item12">
-          <div class="col-md-2 mb-4 data-item book" data-category="">
-            {% from 'card_item.html' import card_item %}
-            {{ card_item(url_for('user.Cang_binh_tinh'),'images/Càng Bình Tĩnh Càng Hạnh Phúc.webp', '14', 'Càng Bình Tĩnh Càng Hạnh Phúc (Tái Bản)', 'Vãn Tình', '1999') }} 
-        </div>
-        <div class="item item13">
-          {% from 'card_item.html' import card_item %}
-        {{ card_item(url_for('user.Cang_ki_luat'),'images/Càng Kỷ Luật, Càng Tự Do.webp', '14', 'Càng Kỷ Luật, Càng Tự Do (Tái Bản) ', 'Ca Tây', '1999') }}
-        </div>
-        <div class="item item14">
-          {% from 'card_item.html' import card_item %}
-        {{ card_item(url_for('user.Cay_cam_ngot'),'images/Cây Cam Ngọt Của Tôi.webp', '14', 'Cây Cam Ngọt Của Tôi', 'José Mauro de Vasconcelos', '1999') }}
-        </div>
-        <div class="item item15">
-          {% from 'card_item.html' import card_item %}
-          {{ card_item(url_for('user.Cay_chuoi'),'images/Cây Chuối Non Đi Giày Xanh (Bìa Mềm) - 2018.webp', '14', 'Cây Chuối Non Đi Giày Xanh (Bìa Mềm) - 2018', 'Nguyễn Nhật Ánh', '1999') }}
-        </div>
-        <div class="item item16">
-          {% from 'card_item.html' import card_item %}
-          {{ card_item(url_for('user.Chien_binh_cau_vong'),'images/Chiến Binh Cầu Vồng (Tái Bản 2020).webp', '14', 'Chiến Binh Cầu Vồng (Tái Bản 2020)', 'Andrea Hirata', '1999') }}
-        </div>
-        <div class="item item17">
-          {% from 'card_item.html' import card_item %}
-          {{ card_item(url_for('user.Cho_toi_xin_mot_ve_ve_tuoi_tho'),'images/Cho Tôi Xin Một Vé Đi Tuổi Thơ (Tái Bản 2023).webp', '14', 'Cho Tôi Xin Một Vé Đi Tuổi Thơ (Tái Bản 2023)', 'Nguyễn Nhật Ánh', '1999') }}
-        </div>
-        <div class="item item18">
-          {% from 'card_item.html' import card_item %}
-        {{ card_item(url_for('user.Chuyen_con_meo_day_hai_au_bay'),'images/Chuyện Con Mèo Dạy Hải Âu Bay (Tái Bản 2019).webp', '14', 'Chuyện Con Mèo Dạy Hải Âu Bay (Tái Bản 2019)', 'Luis Sepúlveda', '1999') }}
-        </div>
-        <div class="item item19">
-          {% from 'card_item.html' import card_item %}
-          {{ card_item(url_for('user.Ban_do_may'),'images/Cloud Atlas – David Mitchell 2004 – Bản đồ mây – Nguyễn Thị Thanh Trúc dịch – 2016.jpeg', '14', 'Bản đồ mây (Tái Bản)', 'David Mitchell', '1999') }}
-        </div>
-        <div class="item item20">
-          {% from 'card_item.html' import card_item %}
-        {{ card_item(url_for('user.Co_hai_con_meo_ngoi_ben_cua_so'),'images/Có Hai Con Mèo Ngồi Bên Cửa Sổ (Tái Bản 2023).webp', '14', 'Có Hai Con Mèo Ngồi Bên Cửa Sổ ', 'Nguyễn Nhật Ánh', '1999') }}
-        </div>
-        <div class="item item21">
-          {% from 'card_item.html' import card_item %}
-          {{ card_item(url_for('user.Grammar_and_vocubulary'),'images/Combo Sách Destination - Grammar And Vocabulary with Answer Key - B1 + B2 + C1 And C2 (Bộ 3 Cuốn).webp', '14','Grammar And Vocabulary', 'Malcolm Mann', '1999') }}
-        </div>
-        <div class="item item22">
-          {% from 'card_item.html' import card_item %}
-          {{ card_item(url_for('user.Hoan_hao_ngon_ngu_co_the'),'images/Cuốn Sách Hoàn Hảo Về Ngôn Ngữ Cơ Thể (Tái Bản 2021).webp', '14', 'Hoàn Hảo Ngôn Ngữ Cơ Thể ', 'Barbara Pease', '1999') }}
-        </div>
-        <div class="item item23">
-          {% from 'card_item.html' import card_item %}
-          {{ card_item(url_for('user.Dac_nhan_tam'),'images/Đắc Nhân Tâm (Tái Bản 2021).webp', '14', 'Đắc Nhân Tâm (Tái Bản 2021)', 'Dale Carnegie', '1999') }}
-        </div>
-        <div class="item item24">
-          {% from 'card_item.html' import card_item %}
-          {{ card_item(url_for('user.Dan_ong_sao_hoa_dan_ba_sao_kim'),'images/Đàn Ông Sao Hỏa Đàn Bà Sao Kim.webp', '14', 'Đàn Ông Sao Hỏa Đàn Bà Sao Kim', 'John Gray', '1999') }}
-        </div>
-        <div class="item item25"></div>
-        <div class="item item26"></div>
-        <div class="item item27"></div>
-        <div class="item item28"></div>
-        <div class="item item29"></div>
-        <div class="item item30"></div>
-        <div class="item item31"></div>
-        <div class="item item32"></div>
-        <div class="item item33"></div>
-        <div class="item item34"></div>
-        <div class="item item35"></div>
-        <div class="item item36"></div>
-        <div class="item item37"></div>
-        <div class="item item38"></div>
-        <div class="item item39"></div>
-        <div class="item item40"></div>
-        <div class="item item41"></div>
-        <div class="item item42"></div>
-        <div class="item item43"></div>
-        <div class="item item44"></div>
-        <div class="item item45"></div>
-        <div class="item item46"></div>
-        <div class="item item47"></div>
-        <div class="item item48"></div>
-        <div class="item item49"></div>
-        <div class="item item50"></div>
-        <div class="item item51"></div>
-        <div class="item item52"></div>
-        <div class="item item53"></div>
-        <div class="item item54"></div>
-        <div class="item item55"></div>
-        <div class="item item56"></div>
-        <div class="item item57"></div>
-        <div class="item item58"></div>
-        <div class="item item59"></div>
-        <div class="item item60"></div>
-        <div class="item item61"></div>
-        <div class="item item62"></div>
-        <div class="item item63"></div>
-        <div class="item item64"></div>
-        <div class="item item65"></div>
-        <div class="item item66"></div>
-        <div class="item item67"></div>
-        <div class="item item68"></div>
-        <div class="item item69"></div>
-        <div class="item item70"></div>
-        <div class="item item71"></div>
-        <div class="item item72"></div>
-        <div class="item item73"></div>
-        <div class="item item74"></div>
-        <div class="item item75"></div>
-        <div class="item item76"></div>
-        <div class="item item77"></div>
-        <div class="item item78"></div>
-        <div class="item item79"></div>
-        <div class="item item80"></div>
-        <div class="item item81"></div>
-        <div class="item item82"></div>
-        <div class="item item83"></div>
-        <div class="item item84"></div>
-        <div class="item item85"></div>
-        <div class="item item86"></div>
-        <div class="item item87"></div>
-        <div class="item item88"></div>
-        <div class="item item89"></div>
-        <div class="item item90"></div>
-        <div class="item item91"></div>
-        <div class="item item92"></div>
-        <div class="item item93"></div>
-        <div class="item item94"></div>
-        <div class="item item95"></div>
-        <div class="item item96"></div>
-        <div class="item item97"></div>
-        <div class="item item98"></div>
-        <div class="item item99"></div>
-        <div class="item item100"></div>
-      </div>
-    </div> -->
+
 
     <!-- hang 1 -->
     <div class="row data-item" id="book1">

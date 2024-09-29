@@ -2,8 +2,8 @@
 {% macro card_item(url, image, price, title, author, sold) %}
 <div class="col data-item">
     <a href="{{ url }}" class="no-underline">
-        <div class="card">
-            <img src="{{ url_for('static', filename=image) }}" class="img-fluid" alt="{{ title }}">
+        <div class="card bod" style="border-radius: 50px;">
+            <img src="{{ url_for('static', filename=image) }}" class="img-fluid bod" style="border-radius: 50px;" alt="{{ title }}">
             <div class="card-body">
                 <p class="card-text text-danger">
                     <i class="fa-solid fa-dollar-sign"></i>

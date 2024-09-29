@@ -20,6 +20,7 @@ class Carousel {
         ];
     }
 
+    // Các phương thức hiện có...
     updateGallery() {
         this.carouselArray.forEach(el => {
             el.classList.remove('item-1', 'item-2', 'item-3', 'item-4', 'item-5');
@@ -78,8 +79,17 @@ class Carousel {
     }
 
     getCurrentBookUrl() {
-        // Luôn lấy URL của cuốn sách ở vị trí thứ 3 (giữa) trong mảng bookUrls
         return this.bookUrls[2] || '#';
+    }
+
+    autoSlide() {
+        setInterval(() => {
+            this.carouselArray.push(this.carouselArray.shift());
+            this.carouselItemg.push(this.carouselItemg.shift());
+            this.bookUrls.push(this.bookUrls.shift());
+            this.updateGallery();
+            this.updateItemg();
+        }, 3000);
     }
 }
 
@@ -89,11 +99,11 @@ exampleCarousel.updateGallery();
 exampleCarousel.updateItemg();
 exampleCarousel.setControls();
 exampleCarousel.useControls();
+exampleCarousel.autoSlide(); // Bắt đầu tự động chuyển
 
 // Thêm sự kiện click cho nút Đọc Sách
 readLink.addEventListener('click', (e) => {
     e.preventDefault();
-    // chặn tính năng của thẻ hiện tại trong trường hợp là thẻ a    
     const currentUrl = exampleCarousel.getCurrentBookUrl();
     if (currentUrl !== '#') {
         window.location.href = currentUrl;

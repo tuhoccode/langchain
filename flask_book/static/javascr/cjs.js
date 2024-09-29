@@ -3,7 +3,7 @@ const galleryControlsContainer = document.querySelector('.container-controls');
 const textItem = document.querySelectorAll('.itemg');
 const galleryControls = ['previous', 'next'];
 const galleryItems = document.querySelectorAll('.item');
-const readLink = document.getElementById('readLink'); // Nút Đọc Sách
+const readLink = document.getElementById('readLink');
 
 class Carousel {
     constructor(container, items, controls, itemg) {
@@ -14,8 +14,8 @@ class Carousel {
         this.bookUrls = [
             '/Tuổi Trẻ Đáng Giá Bao Nhiêu (Tái Bản 2021)',
             '/21 Bài Học Cho Thế Kỷ 21 (Tái Bản)',
-            '/Trẻ Thông Minh Nhờ Đúng Đắn Của Cha Mẹ',
             '/48 Nguyên Tắc Chủ Chốt Của Quyền Lực',
+            '/Trẻ Thông Minh Nhờ Đúng Đắn Của Cha Mẹ',
             '/999 Lá Thư Gửi Cho Chính Mình (Tái Bản)'
         ];
     }
@@ -93,6 +93,7 @@ exampleCarousel.useControls();
 // Thêm sự kiện click cho nút Đọc Sách
 readLink.addEventListener('click', (e) => {
     e.preventDefault();
+    // chặn tính năng của thẻ hiện tại trong trường hợp là thẻ a    
     const currentUrl = exampleCarousel.getCurrentBookUrl();
     if (currentUrl !== '#') {
         window.location.href = currentUrl;

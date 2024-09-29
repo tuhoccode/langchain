@@ -1,44 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flask Bootstrap Example</title>
-    <link rel="stylesheet" href="static/styles/styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col-10 input-group mb-3 py-5">
-        <input type="text" id="summary-input" class="form-control" placeholder="Nhập tóm tắt sách" aria-label="Recipient's username" aria-describedby="basic-addon2">
-        <button class="input-group-text" id="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div id="result" class="cha_la_diem_tua_doi_con col-12">
-        <!-- Thông tin sách sẽ được hiển thị ở đây -->
-      </div>
-    </div>
-  </div>
+  <h5 class="text-content">
+    Nỗi cô đơn ở thời nào cũng đáng sợ, như một thứ bệnh khủng khiếp nhất. Cuốn tiểu thuyết mới nhất của Nguyễn Văn Học đã đề cập đến nỗi cô đơn vô hạn của những con người phải chống chọi với số phận nghiệt ngã. Toàn bộ cuốn sách 264 trang tràn ngập nỗi cô đơn và cách con người gồng mình để thoát khỏi điều đó. Tiểu thuyết Khi vết thương nằm xuống là tác phẩm viết về giới trẻ của nhà văn Nguyễn Văn Học. 
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script>
-    // Handle form submission and display result
-    document.getElementById('search-button').addEventListener('click', async () => {
-        const summary = document.getElementById('summary-input').value;
-        const formData = new FormData();
-        formData.append('summary', summary);
-        
-        const response = await fetch('/submit', {
-            method: 'POST',
-            body: formData
-        });
-        const data = await response.json();
-        document.getElementById('result').innerHTML = data.html;
-    });
-  </script>
-</body>
-</html>
+    "Khi vết thương nằm xuống" với sức hấp dẫn, cuốn hút đặc biệt nhờ phần ngôn ngữ gọn, sắc lạnh.
+    
+    Thông qua cuộc đời nhiều khổ đau và khát vọng của nhân vật Kiêu, tác giả muốn đề cập tới thực trạng của nền giáo dục gia đình và xã hội đối với việc hình thành nhân cách con người. Trong một xã hội mà ý thức con người còn nhiều lạc hậu, thực dụng, nhiều kỳ thị, ít sự cảm thông… thì cái tốt xấu đan xen, dẫn tới nhiều bạo lực, hận thù, cạm bẫy, làm mất niềm tin ở thế hệ trẻ.
+    
+    Nguyễn Văn Học có những trang văn miêu tả dữ dội và trực diện về tâm lý con người và cái ác, bộc lộ những dự cảm chân thực về xã hội, cố gắng chạm sâu vào nỗi đau con người, đó đây lóe lên những phát hiện mới về tâm lý. Tác giả thể hiện nỗi buồn hoang hoải của con người, những vết thương tâm hồn bị khoét sâu cũng được đẩy đến tận cùng tâm can, tới đáy sâu nhất của tâm hồn mỗi người. Nhưng đằng sau những dòng văn thản nhiên ấy, vẫn ẩn chứa một tấm lòng nhân hậu và con mắt đau đáu của người viết dõi theo số phận con người, chia sẻ và đồng hành cùng họ. 
+    
+    Dù cuộc sống được mô tả trong tiểu thuyết có khốc liệt đến mấy, thì những trang văn của Nguyễn Văn Học cũng rất chân thật, thấm đẫm tình yêu thương con người. Việc thiết yếu cần làm là chữa lành vết thương cho tâm hồn con người. Phải xoa dịu để những vết thương ấy “nằm xuống”, ngủ yên, cho con người dũng cảm đi lên với cuộc đời mới. 
+    
+    Tác phẩm Khi vết thương nằm xuống đã mở ra niềm hy vọng: Dù cuộc đời gập ghềnh, gian khổ, nhưng luôn vẫn còn những con đường tốt lành cho mỗi người...  </h5>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %} RECOMMENT BOOK {%endblock%}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/jquery.flipster.min.css') }}">
@@ -79,17 +79,7 @@
       <div class="container-itemg">
         <div class="recom"><h1>Sách Đề Xuất</h1></div>
           <div class="itemg itemg-1"><h3>Tuổi Trẻ Đáng Giá Bao Nhiêu</h3>
-            <h5 class="text-content" >Nỗi cô đơn ở thời nào cũng đáng sợ, như một thứ bệnh khủng khiếp nhất. Cuốn tiểu thuyết mới nhất của Nguyễn Văn Học đã đề cập đến nỗi cô đơn vô hạn của những con người phải chống chọi với số phận nghiệt ngã. Toàn bộ cuốn sách 264 trang tràn ngập nỗi cô đơn và cách con người gồng mình để thoát khỏi điều đó. Tiểu thuyết Khi vết thương nằm xuống là tác phẩm viết về giới trẻ của nhà văn Nguyễn Văn Học. 
-
-              "Khi vết thương nằm xuống" với sức hấp dẫn, cuốn hút đặc biệt nhờ phần ngôn ngữ gọn, sắc lạnh.
-              
-              Thông qua cuộc đời nhiều khổ đau và khát vọng của nhân vật Kiêu, tác giả muốn đề cập tới thực trạng của nền giáo dục gia đình và xã hội đối với việc hình thành nhân cách con người. Trong một xã hội mà ý thức con người còn nhiều lạc hậu, thực dụng, nhiều kỳ thị, ít sự cảm thông… thì cái tốt xấu đan xen, dẫn tới nhiều bạo lực, hận thù, cạm bẫy, làm mất niềm tin ở thế hệ trẻ.
-              
-              Nguyễn Văn Học có những trang văn miêu tả dữ dội và trực diện về tâm lý con người và cái ác, bộc lộ những dự cảm chân thực về xã hội, cố gắng chạm sâu vào nỗi đau con người, đó đây lóe lên những phát hiện mới về tâm lý. Tác giả thể hiện nỗi buồn hoang hoải của con người, những vết thương tâm hồn bị khoét sâu cũng được đẩy đến tận cùng tâm can, tới đáy sâu nhất của tâm hồn mỗi người. Nhưng đằng sau những dòng văn thản nhiên ấy, vẫn ẩn chứa một tấm lòng nhân hậu và con mắt đau đáu của người viết dõi theo số phận con người, chia sẻ và đồng hành cùng họ. 
-              
-              Dù cuộc sống được mô tả trong tiểu thuyết có khốc liệt đến mấy, thì những trang văn của Nguyễn Văn Học cũng rất chân thật, thấm đẫm tình yêu thương con người. Việc thiết yếu cần làm là chữa lành vết thương cho tâm hồn con người. Phải xoa dịu để những vết thương ấy “nằm xuống”, ngủ yên, cho con người dũng cảm đi lên với cuộc đời mới. 
-              
-              Tác phẩm Khi vết thương nằm xuống đã mở ra niềm hy vọng: Dù cuộc đời gập ghềnh, gian khổ, nhưng luôn vẫn còn những con đường tốt lành cho mỗi người...</h6>  
+            {% include 'content.html'%}
           </div>
           <p class="itemg itemg-2">21 Bài Học Cho Thế Kỷ 21</p>
           <p class="itemg itemg-3">48 Nguyên Tắc Chủ Chốt Của Quyền Lực</p>
@@ -125,7 +115,7 @@
 
 
     <!-- hang 1 -->
-    <div class="row data-item" id="book1">
+    <div class="d-none d-md-block row data-item" id="book1">
       <!-- 1 -->
       <div class="col-md-2 mb-4 data-item book" data-category="fiction">
         {% from 'card_item.html' import card_item %}

@@ -78,10 +78,8 @@
     <div class="container">
       <div class="container-itemg">
         <div class="recom"><h1>Sách Đề Xuất</h1></div>
-          <div class="itemg itemg-1"><h3>Tuổi Trẻ Đáng Giá Bao Nhiêu</h3>
-            {% include 'content.html'%}
-          </div>
-          <p class="itemg itemg-2">21 Bài Học Cho Thế Kỷ 21</p>
+          {% include 'content.html'%}
+
           <p class="itemg itemg-3">48 Nguyên Tắc Chủ Chốt Của Quyền Lực</p>
           <p class="itemg itemg-4">Trẻ Thông Minh Nhờ Đúng Đắn Của Cha Mẹ</p>
           <p class="itemg itemg-5">999 Lá Thư Gửi Cho Chính Mình</p>
@@ -93,20 +91,7 @@
       
       
         <div class="container-item" style="margin-right: 200px;">
-          {% set items = [
-              {'url': url_for('user.Tuoi_tre_dang_gia_bao_nhieu'), 'image': 'images/tuoitre.webp', 'price': '14', 'title': 'Tuổi Trẻ Đáng Giá Bao Nhiêu (Tái Bản 2021)', 'author': 'Rosie Nguyễn', 'year': '1999'},
-              {'url': url_for('user.Bai_hoc_tk21'), 'image': 'images/21 Bài Học Cho Thế Kỷ 21.webp', 'price': '14', 'title': '21 Bài Học Cho Thế Kỷ 21 (Tái Bản)', 'author': 'Yuval Noah Harari', 'year': '1999'},
-              {'url': url_for('user.Ngyen_tac_48'), 'image': 'images/48 Nguyên Tắc Chủ Chốt Của Quyền Lực (Tái Bản 2020).webp', 'price': '14', 'title': '48 Nguyên Tắc Chủ Chốt Của Quyền Lực', 'author': 'Robert Greene', 'year': '1999'},
-              {'url': url_for('user.Tre_em_thong_minh_nho_dung_dan_cua_cha_me'), 'image': 'images/90_ Trẻ Thông Minh Nhờ Cách Trò Chuyện Đúng Đắn Của Cha Mẹ (Tái Bản 2019).webp', 'price': '14', 'title': 'Trẻ Thông Minh Nhờ Đúng Đắn Của Cha Mẹ', 'author': 'Urako Kanamori', 'year': '1999'},
-              {'url': url_for('user.La_thu_999'), 'image': 'images/999 Lá Thư Gửi Cho Chính Mình - Những Lá Thư Ấn Tượng Nhất (Phiên Bản Song Ngữ Trung - Việt).webp', 'price': '14', 'title': '999 Lá Thư Gửi Cho Chính Mình (Tái Bản)', 'author': 'Miêu Công Tử', 'year': '1999'},
-              ] %}
-              
-              {% for item in items %}
-              <div class="item item{{ loop.index }}">
-                {% from 'card_item.html' import card_item %}
-                {{ card_item(item.url, item.image, item.price, item.title, item.author, item.year) }}
-              </div>
-              {% endfor %}
+            {% include 'urls.html'%}
               <div class="container-controls"></div>
             </div>
   </div>
@@ -115,7 +100,7 @@
 
 
     <!-- hang 1 -->
-    <div class="d-none d-md-block row data-item" id="book1">
+    <div class="row data-item" id="book1">
       <!-- 1 -->
       <div class="col-md-2 mb-4 data-item book" data-category="fiction">
         {% from 'card_item.html' import card_item %}
@@ -198,7 +183,8 @@
       </div>
       <!-- 3 -->
       <div class="col-md-2 mb-4 data-item book" data-category="">
-        {% from 'card_item.html' import card_item %}{{ card_item(url_for('user.Cay_chuoi'),'images/Cây Chuối Non Đi Giày Xanh (Bìa Mềm) - 2018.webp', '14', 'Cây Chuối Non Đi Giày Xanh (Bìa Mềm) - 2018', 'Nguyễn Nhật Ánh', '1999') }}
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Cay_chuoi'),'images/Cây Chuối Non Đi Giày Xanh (Bìa Mềm) - 2018.webp', '14', 'Cây Chuối Non Đi Giày Xanh (Bìa Mềm) - 2018', 'Nguyễn Nhật Ánh', '1999') }}
       </div>
       <!-- 4 -->
       <div class="col-md-2 mb-4 data-item book" data-category="">
@@ -554,7 +540,8 @@
       </div>
       <!-- 4 -->
       <div class="col-md-2 mb-4 data-item book" data-category="">
-        {% from 'card_item.html' import card_item %}{{ card_item(url_for('user.Tri_tue_do_thai'),'images/Trí Tuệ Do Thái (Tái Bản 2022).webp', '14', 'Trí Tuệ Do Thái (Tái Bản 2022) (Tái Bản)', 'Alan', '1999') }}
+        {% from 'card_item.html' import card_item %}
+        {{ card_item(url_for('user.Tri_tue_do_thai'),'images/Trí Tuệ Do Thái (Tái Bản 2022).webp', '14', 'Trí Tuệ Do Thái (Tái Bản 2022) (Tái Bản)', 'Eran Katz', '1999') }}
       </div>
       <!-- 5 -->
       <div class="col-md-2 mb-4 data-item book" data-category="">

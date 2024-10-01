@@ -1,31 +1,34 @@
-const galleryContainer = document.querySelector('.container-item');
-const galleryControlsContainer = document.querySelector('.container-controls');
-const textItem = document.querySelectorAll('.itemg');
-const galleryControls = ['previous', 'next'];
-const galleryItems = document.querySelectorAll('.item');
+const containerItem = document.querySelector('.container-item');
+const item = document.querySelectorAll('.item');
+const itemg = document.querySelectorAll('.itemg');
+const control = ['previous', 'next'];
+const containerControl = document.querySelector('.container-controls');
 const readLink = document.getElementById('readLink');
 
 class Carousel {
-    constructor(container, items, controls, itemg) {
+    constructor(container, item, itemg, control) {
         this.carouselContainer = container;
-        this.carouselControls = controls;
-        this.carouselArray = [...items];
+        this.carouselItem = [...item];
         this.carouselItemg = [...itemg];
-        this.bookUrls = [
+        this.carouselControl = control;
+        this.bookUrl = [
+            // hang 1
             '/Tuổi Trẻ Đáng Giá Bao Nhiêu (Tái Bản 2021)',
             '/21 Bài Học Cho Thế Kỷ 21 (Tái Bản)',
             '/48 Nguyên Tắc Chủ Chốt Của Quyền Lực',
             '/Trẻ Thông Minh Nhờ Đúng Đắn Của Cha Mẹ',
-            '/999 Lá Thư Gửi Cho Chính Mình (Tái Bản)'
-        ];
+            '/999 Lá Thư Gửi Cho Chính Mình (Tái Bản)',
+            '/2666 – Roberto Bolaño (Tái Bản 2006)'
+            // hang 2
+        ,];
     }
 
-    // Các phương thức hiện có...
-    updateGallery() {
-        this.carouselArray.forEach(el => {
-            el.classList.remove('item-1', 'item-2', 'item-3', 'item-4', 'item-5');
+    updateItem() {
+        this.carouselItem.forEach(el => {
+            el.classList.remove(...Array.from({ length: 999}, (_, i) => `item-${i + 1}`));
         });
-        this.carouselArray.slice(0, 5).forEach((el, i) => {
+        const countItem = Math.min(999, this.carouselItem.length);
+        this.carouselItem.slice(0, countItem).forEach((el, i) => {
             el.classList.add(`item-${i + 1}`);
         });
         this.updateReadLink();
@@ -33,38 +36,39 @@ class Carousel {
 
     updateItemg() {
         this.carouselItemg.forEach(el => {
-            el.classList.remove('itemg-1', 'itemg-2', 'itemg-3', 'itemg-4', 'itemg-5');
+            el.classList.remove(...Array.from({ length: 999 }, (_, i) => `itemg-${i + 1}`));
         });
-        this.carouselItemg.slice(0, 5).forEach((el, i) => {
+        const countItemg = Math.min(999, this.carouselItemg.length);
+        this.carouselItemg.slice(0, countItemg).forEach((el, i) => {
             el.classList.add(`itemg-${i + 1}`);
         });
     }
 
     setCurrentState(direction) {
-        if (direction.className === 'container-controls-previous') {
-            this.carouselArray.unshift(this.carouselArray.pop());
+        if (direction.classList.contains('container-controls-previous')) {
+            this.carouselItem.unshift(this.carouselItem.pop());
             this.carouselItemg.unshift(this.carouselItemg.pop());
-            this.bookUrls.unshift(this.bookUrls.pop());
+            this.bookUrl.unshift(this.bookUrl.pop());
         } else {
-            this.carouselArray.push(this.carouselArray.shift());
+            this.carouselItem.push(this.carouselItem.shift());
             this.carouselItemg.push(this.carouselItemg.shift());
-            this.bookUrls.push(this.bookUrls.shift());
+            this.bookUrl.push(this.bookUrl.shift());
         }
-        this.updateGallery();
+        this.updateItem();
         this.updateItemg();
     }
 
-    setControls() {
-        this.carouselControls.forEach(control => {
+    setControl() {
+        this.carouselControl.forEach(control => {
             const button = document.createElement('button');
             button.className = `container-controls-${control}`;
             button.innerText = control;
-            galleryControlsContainer.appendChild(button);
+            containerControl.appendChild(button);
         });
     }
 
-    useControls() {
-        const triggers = [...galleryControlsContainer.childNodes];
+    useControl() {
+        const triggers = [...containerControl.childNodes];
         triggers.forEach(control => {
             control.addEventListener('click', e => {
                 e.preventDefault();
@@ -74,37 +78,35 @@ class Carousel {
     }
 
     updateReadLink() {
-        const currentBookUrl = this.getCurrentBookUrl();
-        readLink.href = currentBookUrl;
+        const currentLink = this.getCurrentLink();
+        readLink.href = currentLink;
     }
 
-    getCurrentBookUrl() {
-        return this.bookUrls[2] || '#';
+    getCurrentLink() {
+        return this.bookUrl[2] || '#'; 
     }
 
-    autoSlide() {
+    autoslide() {
         setInterval(() => {
-            this.carouselArray.push(this.carouselArray.shift());
+            this.carouselItem.push(this.carouselItem.shift());
             this.carouselItemg.push(this.carouselItemg.shift());
-            this.bookUrls.push(this.bookUrls.shift());
-            this.updateGallery();
+            this.bookUrl.push(this.bookUrl.shift());
+            this.updateItem();
             this.updateItemg();
-        }, 3000);
+        },5000000);
     }
 }
 
-// Khởi tạo carousel
-const exampleCarousel = new Carousel(galleryContainer, galleryItems, galleryControls, textItem);
-exampleCarousel.updateGallery();
-exampleCarousel.updateItemg();
-exampleCarousel.setControls();
-exampleCarousel.useControls();
-exampleCarousel.autoSlide(); // Bắt đầu tự động chuyển
+const runjs = new Carousel(containerItem, item, itemg, control);
+runjs.updateItem();
+runjs.updateItemg();
+runjs.setControl();
+runjs.useControl();
+runjs.autoslide();
 
-// Thêm sự kiện click cho nút Đọc Sách
-readLink.addEventListener('click', (e) => {
+readLink.addEventListener('click', e => {
     e.preventDefault();
-    const currentUrl = exampleCarousel.getCurrentBookUrl();
+    const currentUrl = runjs.getCurrentLink();
     if (currentUrl !== '#') {
         window.location.href = currentUrl;
     }

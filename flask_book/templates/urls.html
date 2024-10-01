@@ -1,89 +1,88 @@
 {% set items = [
-  <!-- hang 1 -->
     {'url': url_for('user.Tuoi_tre_dang_gia_bao_nhieu'), 'image': 'images/tuoitre.webp', 'price': '14', 'title': 'Tuổi Trẻ Đáng Giá Bao Nhiêu (Tái Bản 2021)', 'author': 'Rosie Nguyễn', 'year': '1999'},
     {'url': url_for('user.Bai_hoc_tk21'), 'image': 'images/21 Bài Học Cho Thế Kỷ 21.webp', 'price': '14', 'title': '21 Bài Học Cho Thế Kỷ 21 (Tái Bản)', 'author': 'Yuval Noah Harari', 'year': '1999'},
     {'url': url_for('user.Ngyen_tac_48'), 'image': 'images/48 Nguyên Tắc Chủ Chốt Của Quyền Lực (Tái Bản 2020).webp', 'price': '14', 'title': '48 Nguyên Tắc Chủ Chốt Của Quyền Lực', 'author': 'Robert Greene', 'year': '1999'},
     {'url': url_for('user.Tre_em_thong_minh_nho_dung_dan_cua_cha_me'), 'image': 'images/90_ Trẻ Thông Minh Nhờ Cách Trò Chuyện Đúng Đắn Của Cha Mẹ (Tái Bản 2019).webp', 'price': '14', 'title': 'Trẻ Thông Minh Nhờ Đúng Đắn Của Cha Mẹ', 'author': 'Urako Kanamori', 'year': '1999'},
     {'url': url_for('user.La_thu_999'), 'image': 'images/999 Lá Thư Gửi Cho Chính Mình - Những Lá Thư Ấn Tượng Nhất (Phiên Bản Song Ngữ Trung - Việt).webp', 'price': '14', 'title': '999 Lá Thư Gửi Cho Chính Mình (Tái Bản)', 'author': 'Miêu Công Tử', 'year': '1999'},
     {'url': url_for('user.Roberto'), 'image': 'images/2666 – Roberto Bolaño_ translated by Natasha Wimmer 2008 – 2666 Trần Tiễn Cao Đăng, Quân Khuê dịch 2020.jpg', 'price': '14', 'title': '2666 – Roberto Bolaño (Tái Bản 2006)', 'author': 'Tiễn Cao Đăng', 'year': '1999'},
-    <!-- hang-2 -->
+
     {'url': url_for('user.Bien_moi_thu_thanh_tien'), 'image': 'images/Biến Mọi Thứ Thành Tiền - Make Money.webp', 'price': '14', 'title': 'Biến Mọi Thứ Thành Tiền - Make Money', 'author': 'Anh Dũng Nguyễn', 'year': '1999'},
     {'url': url_for('user.Bi_mat_cua_thien_an'), 'image': 'images/Bí Mật Của Phan Thiên Ân (Tái Bản 2023).webp', 'price': '14', 'title': 'Bí Mật Của Phan Thiên Ân (Tái Bản 2023)', 'author': 'Alan Phan', 'year': '1999'},
     {'url': url_for('user.Binh_tinh_khi_e'), 'image': 'images/Bình Tĩnh Khi Ế, Mạnh Mẽ Khi Yêu - All The Rules - Tái Bản.webp', 'price': '14', 'title': 'Bình Tĩnh Khi Ế, Mạnh Mẽ Khi Yêu', 'author': 'Ellen Fein & Sherrie Schneider', 'year': '1999'},
     {'url': url_for('user.Luyen_thi_thpt_quoc_gia_mon_toan'), 'image': 'images/Bộ Đề Minh Họa Luyện Thi THPT Quốc Gia Môn Toán.webp', 'price': '14', 'title': 'Luyện Thi THPT Quốc Gia Môn Toán', 'author': ' NXB Thanh Niên', 'year': '1999'},
     {'url': url_for('user.Bo_sach_lam_giau'), 'image': 'images/Bộ Sách Làm Giàu Từ Chứng Khoán (How To Make Money In Stock) Phiên Bản Mới + Hướng Dẫn Thực Hành Canslim Cho Người Mới Bắt Đầu (Bộ 2 Cuốn).webp', 'price': '14', 'title': 'Bộ Sách Làm Giàu Từ Chứng Khoán', 'author': 'William J. O Neil', 'year': '1999'},
     {'url': url_for('user.Cang_binh_tinh'), 'image': 'images/Càng Bình Tĩnh Càng Hạnh Phúc.webp', 'price': '14', 'title': 'Càng Bình Tĩnh Càng Hạnh Phúc (Tái Bản)', 'author': 'Vãn Tình', 'year': '1999'},
-    <!-- hang 3 -->
+
     {'url': url_for('user.Cang_ki_luat'), 'image': 'images/Càng Kỷ Luật, Càng Tự Do.webp', 'price': '14', 'title': 'Càng Kỷ Luật, Càng Tự Do (Tái Bản) ', 'author': 'Ca Tây', 'year': '1999'},
     {'url': url_for('user.Cay_cam_ngot'), 'image': 'images/Cây Cam Ngọt Của Tôi.webp', 'price': '14', 'title': 'Cây Cam Ngọt Của Tôi', 'author': 'José Mauro de Vasconcelos', 'year': '1999'},
     {'url': url_for('user.Cay_chuoi'), 'image': 'images/Cây Chuối Non Đi Giày Xanh (Bìa Mềm) - 2018.webp', 'price': '14', 'title': 'Cây Chuối Non Đi Giày Xanh (Bìa Mềm) - 2018', 'author': 'Nguyễn Nhật Ánh', 'year': '1999'},
     {'url': url_for('user.Chien_binh_cau_vong'), 'image': 'images/Chiến Binh Cầu Vồng (Tái Bản 2020).webp', 'price': '14', 'title': 'Chiến Binh Cầu Vồng (Tái Bản 2020)', 'author': 'Andrea Hirata', 'year': '1999'},
     {'url': url_for('user.Cho_toi_xin_mot_ve_ve_tuoi_tho'), 'image': 'images/Cho Tôi Xin Một Vé Đi Tuổi Thơ (Tái Bản 2023).webp', 'price': '14', 'title': 'Cho Tôi Xin Một Vé Đi Tuổi Thơ (Tái Bản 2023)', 'author': 'Nguyễn Nhật Ánh', 'year': '1999'},
     {'url': url_for('user.Chuyen_con_meo_day_hai_au_bay'), 'image': 'images/Chuyện Con Mèo Dạy Hải Âu Bay (Tái Bản 2019).webp', 'price': '14', 'title': 'Chuyện Con Mèo Dạy Hải Âu Bay (Tái Bản 2019)', 'author': 'Luis Sepúlveda', 'year': '1999'},
-    <!-- hang 4 -->
+
     {'url': url_for('user.Ban_do_may'), 'image': 'images/Cloud Atlas – David Mitchell 2004 – Bản đồ mây – Nguyễn Thị Thanh Trúc dịch – 2016.jpeg', 'price': '14', 'title': 'Bản đồ mây (Tái Bản)', 'author': 'David Mitchell', 'year': '1999'},
     {'url': url_for('user.Co_hai_con_meo_ngoi_ben_cua_so'), 'image': 'images/Có Hai Con Mèo Ngồi Bên Cửa Sổ (Tái Bản 2023).webp', 'price': '14', 'title': 'Có Hai Con Mèo Ngồi Bên Cửa Sổ ', 'author': 'Nguyễn Nhật Ánh', 'year': '1999'},
     {'url': url_for('user.Grammar_and_vocubulary'), 'image': 'images/Combo Sách Destination - Grammar And Vocabulary with Answer Key - B1 + B2 + C1 And C2 (Bộ 3 Cuốn).webp', 'price': '14', 'title': 'Grammar And Vocabulary', 'author': 'Malcolm Mann', 'year': '1999'},
     {'url': url_for('user.Hoan_hao_ngon_ngu_co_the'), 'image': 'images/Cuốn Sách Hoàn Hảo Về Ngôn Ngữ Cơ Thể (Tái Bản 2021).webp', 'price': '14', 'title': 'Hoàn Hảo Ngôn Ngữ Cơ Thể', 'author': 'Barbara Pease', 'year': '1999'},
     {'url': url_for('user.Dac_nhan_tam'), 'image': 'images/Đắc Nhân Tâm (Tái Bản 2021).webp', 'price': '14', 'title': 'Đắc Nhân Tâm (Tái Bản 2021)', 'author': 'Dale Carnegie', 'year': '1999'},
     {'url': url_for('user.Dan_ong_sao_hoa_dan_ba_sao_kim'), 'image': 'images/Đàn Ông Sao Hỏa Đàn Bà Sao Kim.webp', 'price': '14', 'title': 'Đàn Ông Sao Hỏa Đàn Bà Sao Kim', 'author': 'John Gray', 'year': '1999'},
-    <!-- hang 5 -->
+
     {'url': url_for('user.Day_con_lam_giau'), 'image': 'images/Dạy Con Làm Giàu 01_ Để Không Có Tiền Vẫn Tạo Ra Tiền (Tái Bản 2022).webp', 'price': '14', 'title': 'Dạy Con Làm Giàu (Tái Bản) 2010', 'author': 'Robert Toru Kiyosaki', 'year': '1999'},
     {'url': url_for('user.Dieu_ki_dieu_cua_tiem_tam_hoa'), 'image': 'images/Điều Kỳ Diệu Của Tiệm Tạp Hóa Namiya (Tái Bản 2018).webp', 'price': '14', 'title': 'Điều Kỳ Diệu Của Tiệm Tạp Hóa Namiya', 'author': 'Higashino Keigo', 'year': '1999'},
     {'url': url_for('user.Di_tim_le_song'), 'image': 'images/Đi Tìm Lẽ Sống (Tái Bản 2022).webp', 'price': '14', 'title': 'Đi Tìm Lẽ Sống (Tái Bản 2022-2024)', 'author': 'Viktor Frankl', 'year': '1999'},
     {'url': url_for('user.Dua_tre_hieu_chuyen_thuong_khong_co_keo_an'), 'image': 'images/Đứa Trẻ Hiểu Chuyện Thường Không Có Kẹo Ăn.webp', 'price': '14', 'title': 'Đứa Trẻ Hiểu Chuyện Thường Không Có Kẹo Ăn', 'author': 'Nguyên Anh', 'year': '1999'},
     {'url': url_for('user.Thoat_den_phuong_tay'), 'image': 'images/Exit West – Mohsin Hamid 2017 – Thoát đến Phương Tây – Dương Mạnh Hùng dịch 2019.jpg', 'price': '14', 'title': 'Thoát đến Phương Tây (Tái Bản)', 'author': 'Mohsin Hamid', 'year': '1999'},
     {'url': url_for('user.Ghi_chep_phap_y_nhung_cai_chet_bi_an'), 'image': 'images/Ghi Chép Pháp Y - Những Cái Chết Bí Ẩn.webp', 'price': '14', 'title': 'Ghi Chép Pháp Y - Những Cái Chết Bí Ẩn', 'author': 'Lưu Hiển Huy', 'year': '1999'},
-    <!-- hang 6 -->
+
     {'url': url_for('user.Gian'), 'image': 'images/Giận (Tái Bản 2023).webp', 'price': '14', 'title': 'Giận (Tái Bản 2023)', 'author': 'Thích Nhất Hạnh', 'year': '1999'},
     {'url': url_for('user.Giao_trinh_han_ngu_1'), 'image': 'images/Giáo Trình Hán Ngữ 1 - Tập 1 - Quyển Thượng Phiên Bản Mới (Tái Bản 2022) (Tải App).webp', 'price': '14', 'title': 'Giáo Trình Hán Ngữ 1(Tái Bản 2022)', 'author': 'Dương Ký Châu', 'year': '1999'},
     {'url': url_for('user.Hanh_tinh_cua_mot_ke_nghi_nhieu'), 'image': 'images/Hành Tinh Của Một Kẻ Nghĩ Nhiều.webp', 'price': '14', 'title': 'Hành Tinh Một Kẻ Nghĩ Nhiều', 'author': 'Nguyễn Đoàn Minh Thư', 'year': '1999'},
     {'url': url_for('user.Hieu_ve_trai_tim'), 'image': 'images/Hiểu Về Trái Tim (Tái Bản 2023).webp', 'price': '14', 'title': 'Hiểu Về Trái Tim (Tái Bản 2023-2024)', 'author': 'Minh Niệm', 'year': '1999'},
     {'url': url_for('user.Hoang_tu_be'), 'image': 'images/Hoàng Tử Bé (Tái Bản).webp', 'price': '14', 'title': 'Hoàng Tử Bé (Tái Bản)', 'author': 'Antoine de Saint-Exupéry', 'year': '1999'},
     {'url': url_for('user.Khi_hoi_tho_hoa_thinh_khong'), 'image': 'images/Khi Hơi Thở Hóa Thinh Không (Tái Bản 2020).webp', 'price': '14', 'title': 'Khi Hơi Thở Hóa Thinh Không (Tái Bản 2020)', 'author': 'Paul Kalanithi', 'year': '1999'},
-    <!-- hang 7 -->
+
     {'url': url_for('user.Khong_diet_khong_sinh_dung_so_hai'), 'image': 'images/Không Diệt Không Sinh Đừng Sợ Hãi (Tái Bản 2022).webp', 'price': '14', 'title': 'Không Diệt Không Sinh Đừng Sợ Hãi', 'author': 'Thích Nhất Hạnh', 'year': '1999'},
     {'url': url_for('user.Khong_phai_soi_nhung_cung_dung_la_cuu'), 'image': 'images/Không Phải Sói Nhưng Cũng Đừng Là Cừu.webp', 'price': '14', 'title': 'Không Phải Sói Nhưng Cũng Đừng Là Cừu', 'author': 'Lê Bảo Ngọc', 'year': '1999'},
     {'url': url_for('user.Khong_so_cham_chi_so_dung'), 'image': 'images/Không Sợ Chậm Chỉ Sợ Dừng.webp', 'price': '14', 'title': 'Không Sợ Chậm Chỉ Sợ Dừng (Tái Bản 2022)', 'author': 'Vãn Tình', 'year': '1999'},
     {'url': url_for('user.Lam_ban_voi_bau_troi'), 'image': 'images/Làm Bạn Với Bầu Trời - Bìa Cứng - Tặng Kèm Khung Hình Xinh Xắn.webp', 'price': '14', 'title': 'Làm Bạn Với Bầu Trời (Tái Bản 2022-2024)', 'author': 'Nguyễn Nhật Ánh', 'year': '1999'},
     {'url': url_for('user.Lincoln_o_coi_trung_am'), 'image': 'images/Lincoln in the Bardo – George Saunders 2017 – Lincoln ở cõi trung ấm – Lan Young dịch 2021.jpg', 'price': '14', 'title': 'Lincoln ở cõi trung ấm (Tái Bản 2022)', 'author': 'George Saunders', 'year': '1999'},
     {'url': url_for('user.Luong_gioi'), 'image': 'mages/Middlesex – Jeffrey Eugenides 2002 – Lưỡng giới (Middlesex) – Zét Nguyễn dịch 2019.jpg', 'price': '14', 'title': 'Lưỡng giới (Middlesex) (Tái Bản 2022)', 'author': 'Jeffrey Eugenides', 'year': '1999'},
-    <!-- hang 8 -->
+
     {'url': url_for('user.Muon_kiep_nhan_sinh'), 'image': 'images/Muôn Kiếp Nhân Sinh - Many Times, Many Lives.webp', 'price': '14', 'title': 'Muôn Kiếp Nhân Sinh', 'author': 'John Vu', 'year': '1999'},
     {'url': url_for('user.Muon_kiep_nhan_sinh_bia_cung'), 'image': 'images/Muôn Kiếp Nhân Sinh - Many Times, Many Lives (Bìa Cứng).webp', 'price': '14', 'title': 'Muôn Kiếp Nhân Sinh(Bìa Cứng)', 'author': 'John Vu', 'year': '1999'},
     {'url': url_for('user.Muon_kiep_nhan_sinh_kho_nho'), 'image': 'images/Muôn Kiếp Nhân Sinh - Many Times, Many Lives (Khổ Nhỏ).webp', 'price': '14', 'title': 'Muôn Kiếp Nhân Sinh(Khổ Nhỏ)', 'author': 'John Vu', 'year': '1999'},
     {'url': url_for('user.Muon_kiep_nhan_sinh_tap_2'), 'image': 'images/Muôn Kiếp Nhân Sinh - Many Times, Many Lives - Tập 2.webp', 'price': '14', 'title': 'Muôn Kiếp Nhân Sinh - Tập 2', 'author': 'John Vu', 'year': '1999'},
     {'url': url_for('user.Muon_kiep_nhan_sinh_tap_3'), 'image': 'images/Muôn Kiếp Nhân Sinh - Many Times, Many Lives - Tập 3.webp', 'price': '14', 'title': 'Muôn Kiếp Nhân Sinh - Tập 3', 'author': 'John Vu', 'year': '1999'},
     {'url': url_for('user.Nguoi_ban_phi_thuong'), 'image': 'images/My Brilliant Friend – Elena Ferrante_ translated by Ann Goldstein 2012 – Người bạn phi thường – Nguyễn Minh Nguyệt dịch 2021.jpg', 'price': '14', 'title': 'Người bạn phi thường', 'author': 'Elena Ferrante', 'year': '1999'},
-    <!-- hang 9 -->
+
     {'url': url_for('user.Nguoi_dua_dieu'), 'image': 'images/Người Đua Diều.webp', 'price': '14', 'title': 'Người Đua Diều (Tái Bản 2022)-2024', 'author': 'Khaled Hosseini', 'year': '1999'},
     {'url': url_for('user.Nguoi_giau_co_nhat_babylon'), 'image': 'images/NgườI Giàu Có Nhất Thành Babylon (Tái Bản).webp', 'price': '14', 'title': 'NgườI Giàu Có Nhất Babylon', 'author': 'George Samuel Clason', 'year': '1999'},
     {'url': url_for('user.Ngu_phap_tieng_anh_danh_cho_hoc_sinh'), 'image': 'images/Ngữ Pháp Tiếng Anh Dành Cho Học Sinh - Vở Bài Tập & Đáp Án (Tái Bản).webp', 'price': '14', 'title': 'Ngữ Pháp Tiếng Anh Dành Cho Học Sinh', 'author': 'Mai Lan Hương', 'year': '1999'},
     {'url': url_for('user.Nha_dau_tu_thong_minh'), 'image': 'images/Nhà Đầu Tư Thông Minh (Tái Bản 2020).webp', 'price': '14', 'title': 'Nhà Đầu Tư Thông Minh (Tái Bản 2020-2024)', 'author': 'Benjamin Graham', 'year': '1999'},
     {'url': url_for('user.Nha_gia_kim'), 'image': 'images/Nhà Giả Kim (Tái Bản 2020).webp', 'price': '14', 'title': 'Nhà Giả Kim (Tái Bản 2020) (Tái Bản)', 'author': 'Paulo Coelho', 'year': '1999'},
     {'url': url_for('user.Nhung_tu_nhan_cua_dia_ly'), 'image': 'images/Những Tù Nhân Của Địa Lý.webp', 'price': '14', 'title': 'Những Tù Nhân Của Địa Lý (Tái Bản 2022)', 'author': 'Tim Marshall', 'year': '1999'},
-    <!-- hang 10 -->
+
     {'url': url_for('user.Nong_gian_la_ban_nang_tinh_lang_la_ban_linh'), 'image': 'images/Nóng Giận Là Bản Năng, Tĩnh Lặng Là Bản Lĩnh (Tái Bản 2020).webp', 'price': '14', 'title': 'Nóng Giận Là Bản Năng - Tĩnh Lặng Là Bản Lĩnh', 'author': 'Mạc Thiên Tứ', 'year': '1999'},
     {'url': url_for('user.Nong_gian_la_ban_nang_tinh_lang_la_ban_linh'), 'image': 'images/Nóng Giận Là Bản Năng, Tĩnh Lặng Là Bản Lĩnh (Tái Bản 2020).webp', 'price': '14', 'title': 'Nóng Giận Là Bản Năng - Tĩnh Lặng Là Bản Lĩnh', 'author': 'Mạc Thiên Tứ', 'year': '1999'},
     {'url': url_for('user.Pachinko'), 'image': 'images/Pachinko – Min Jin Lee 2017 – Pachinko – Nguyễn Bích Lan dịch 2019.jpg', 'price': '14', 'title': 'Pachinko (Tái Bản) (Tái Bản)(Tái Bản)', 'author': 'Pachinko', 'year': '1999'},
     {'url': url_for('user.Payback_time'), 'image': 'images/Payback Time - Ngày Đòi Nợ (Tái Bản 2022).webp', 'price': '14', 'title': 'Payback Time - Ngày Đòi Nợ (Tái Bản 2022)', 'author': 'Phil Town', 'year': '1999'},
     {'url': url_for('user.Saying_of_youth'), 'image': 'images/saying_of_youth.jpeg', 'price': '14', 'title': 'Sayings Of Youth - Lời Nói Của Thanh Xuân', 'author': 'Đào Hoàng Diệu', 'year': '1999'},
     {'url': url_for('user.Su_im_lang_cua_bay_cuu'), 'image': 'mages/Sự Im Lặng Của Bầy Cừu (Tái Bản 2019).webp', 'price': '14', 'title': 'Sự Im Lặng Của Bầy Cừu (Tái Bản 2019)', 'author': 'Thomas Harris', 'year': '1999'},
-    <!-- hang 11 -->
+
     {'url': url_for('user.Tam_li_hoc_toi_pham'), 'image': 'images/Tâm Lý Học Tội Phạm - Phác Họa Chân Dung Kẻ Phạm Tội.webp', 'price': '14', 'title': 'Tâm Lý Học Tội Phạm', 'author': 'Diệp Hồng Vũ', 'year': '1999'},
     {'url': url_for('user.Tam_li_hoc_ve_tien'), 'image': 'images/Tâm Lý Học Về Tiền.webp', 'price': '14', 'title': 'Tâm Lý Học Về Tiền', 'author': 'Morgan Housel', 'year': '1999'},
     {'url': url_for('user.Tenth_of_december'), 'image': 'images/Tenth of December – George Saunders 2013 – Ngày mười tháng mười hai – Ngọc Trà, Triều Dương – Hương Thảo – Trần Hạnh dịch 2016.jpg', 'price': '14', 'title': 'Tenth of December', 'author': 'George Saunders', 'year': '1999'},
     {'url': url_for('user.Thao_tung_tam_li'), 'image': 'images/Thao Túng Tâm Lý - Nhận Diện, Thức Tỉnh Và Chữa Lành Những Tổn Thương Tiềm Ẩn.webp', 'price': '14', 'title': 'Thao Túng Tâm Lý', 'author': 'Shannon Thomas', 'year': '1999'},
     {'url': url_for('user.Thay_doi_cuoc_song_so_hoc'), 'image': 'images/Thay Đổi Cuộc Sống Với Nhân Số Học.webp', 'price': '14', 'title': 'Thay Đổi Cuộc Sống Số Học', 'author': 'David A Phillips', 'year': '1999'},
     {'url': url_for('user.The_goldfinch'), 'image': 'images/The Goldfinch – Donna Tartt 2013 – Con sẻ vàng – Nguyễn An Lý dịch 2017.jpg', 'price': '14', 'title': 'The Goldfinch (Tái Bản)', 'author': 'Donna Tartt', 'year': '1999'},
-    <!-- hang 12 -->
+
     {'url': url_for('user.The_savage_detectives'), 'image': 'images/The Savage Detectives – Roberto Bolaño_ translated by Natasha Wimmer 2007 – Thám tử Hoang dã – Trần Tiễn Cao Đăng dịch 2023.jpeg', 'price': '14', 'title': 'The Savage Detectives', 'author': 'Roberto Bolaño', 'year': '1999'},
     {'url': url_for('user.Underground_railroad'), 'image': 'images/The Underground Railroad – Colson Whitehead 2016 – Tuyến hỏa xa ngầm – Nguyễn Bích Lan dịch 2019.jpg', 'price': '14', 'title': 'Underground Railroad', 'author': 'Colson Whitehead', 'year': '1999'},
     {'url': url_for('user.The_year_of_magical_thinking'), 'image': 'images/The Year of Magical Thinking – Joan Didion 2005 – Từ địa ngục trở về.jpg', 'price': '14', 'title': 'The Year of Magical Thinking', 'author': 'Joan Didion', 'year': '1999'},
     {'url': url_for('user.Thiet_ke_cuoc_doi_thinh_vuong'), 'image': 'images/Thiết Kế Cuộc Đời Thịnh Vượng - Design A Prosperous Life (Tái Bản 2021).webp', 'price': '14', 'title': 'Thiết Kế Cuộc Đời Thịnh Vượng', 'author': 'Thai Pham', 'year': '1999'},
     {'url': url_for('user.Thiet_ke_cuoc_doi_thinh_vuong'), 'image': 'images/Thiết Kế Cuộc Đời Thịnh Vượng - Design A Prosperous Life (Tái Bản 2021).webp', 'price': '14', 'title': 'Thiết Kế Cuộc Đời Thịnh Vượng', 'author': 'Thai Pham', 'year': '1999'},
     {'url': url_for('user.Think_and_grow_rich'), 'image': 'images/Think And Grow Rich - Nghĩ Giàu Và Làm Giàu.webp', 'price': '14', 'title': 'Think And Grow Rich', 'author': 'WiNapoleon Hilllliam', 'year': '1999'},
-    <!-- hang 13 -->
+
     {'url': url_for('user.Tho_bay_mau_va_nhung_nguoi_nghi_no_la_ban'), 'image': 'images/Thỏ Bảy Màu Và Những Người Nghĩ Nó Là Bạn (Tái Bản 2023).webp', 'price': '14', 'title': 'Thỏ Bảy Màu Và Những Người Nghĩ Nó Là Bạn', 'author': 'Thái Ngọc Huỳnh', 'year': '1999'},
     {'url': url_for('user.Thuat_thao_tung'), 'image': 'images/Thuật Thao Túng - Góc Tối Ẩn Sau Mỗi Câu Nói.webp', 'price': '14', 'title': 'Thuật Thao Túng (Tái Bản)', 'author': 'Wladislaw Jachtchenko', 'year': '1999'},
     {'url': url_for('user.Tieng_han_tong_hop_cho_nguoi_viet_nam'), 'image': 'images/Tiếng Hàn Tổng Hợp Dành Cho Người Việt Nam - Sơ Cấp 1 (Tái Bản 2023).webp', 'price': '14', 'title': 'Tiếng Hàn Tổng Hợp Dành Cho Người Việt Nam', 'author': 'Hang Rok', 'year': '1999'},
@@ -91,7 +90,7 @@
     {'url': url_for('user.Tri_tue_do_thai'), 'image': 'images/Trí Tuệ Do Thái (Tái Bản 2022).webp', 'price': '14', 'title': 'Trí Tuệ Do Thái (Tái Bản 2022) (Tái Bản)', 'author': 'Eran Katz', 'year': '1999'},
     {'url': url_for('user.Tri_tue_do_thai'), 'image': 'images/Trí Tuệ Do Thái (Tái Bản 2022).webp', 'price': '14', 'title': 'Trí Tuệ Do Thái (Tái Bản 2022) (Tái Bản)', 'author': 'Eran Katz', 'year': '1999'},
     
-    ,]%}
+    ]%}
     
     {% for item in items %}
     <div class="item item-{{ loop.index }}">

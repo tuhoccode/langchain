@@ -4,9 +4,6 @@
 .text-b:hover{
     color: blue !important;
 }
-/* styles/styles.css */
-
-/* Menu styling */
 #menu {
     list-style-type: none;
     padding: 0;
@@ -35,12 +32,10 @@
     color: #007bff; /* Bootstrap primary color on hover */
 }
 
-/* Toggle span styling */
 #toggleSpan {
     cursor: pointer;
 }
 
-/* Show menu on toggle */
 #toggleSpan.active + #menu {
     display: block; /* Show menu when toggle is active */
 }
@@ -240,21 +235,20 @@ body{
     width: 100%;
     
 }
+
+
 .text-content {
-    display: flex; 
+    display: -webkit-box; 
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 4; 
     overflow: hidden; 
+    text-overflow: ellipsis; 
     max-height: 120px; 
-    margin-top: 10px;
     max-width: 800px; 
-    /* text-overflow: ellipsis; giải pháp thứ 2 cũng hiện dấu ... nhưng phụ thuộc bắt buộc là hidden và có max-height,width */ 
+    line-height: 1.5em;
 }
-.text-content::after {
-    content: '...'; 
-    display: inline-block; 
-    margin-top: auto; 
-    margin-right: 150px;
-    opacity: 1; 
-}
+
+
 .bt-ds{
     display: flex;
     margin-left: -70px;

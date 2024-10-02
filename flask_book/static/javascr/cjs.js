@@ -3,7 +3,7 @@ const item = document.querySelectorAll('.item');
 const itemg = document.querySelectorAll('.itemg');
 const control = ['previous', 'next'];
 const containerControl = document.querySelector('.container-controls');
-const readLink = document.getElementById('readLink');
+const RLink = document.getElementById('readLink');
 
 class Carousel {
     constructor(container, item, itemg, control) {
@@ -164,7 +164,7 @@ class Carousel {
 
     updateReadLink() {
         const currentLink = this.getCurrentLink();
-        readLink.href = currentLink;
+        RLink.href = currentLink;
     }
 
     getCurrentLink() {
@@ -178,6 +178,7 @@ class Carousel {
             this.bookUrl.push(this.bookUrl.shift());
             this.updateItem();
             this.updateItemg();
+            this.updateReadLink();
         },9000000);
     }
 }
@@ -189,7 +190,7 @@ runjs.setControl();
 runjs.useControl();
 runjs.autoslide();
 
-readLink.addEventListener('click', e => {
+RLink.addEventListener('click', e => {
     e.preventDefault();
     const currentUrl = runjs.getCurrentLink();
     if (currentUrl !== '#') {

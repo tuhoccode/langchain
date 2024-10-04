@@ -261,4 +261,9 @@ body{
     height: 50px;
     border-radius: 100px;
 }
+.text-cont{
+    margin-bottom: 120px; 
+    margin-top: 120px; 
+}
+            /* <br style="margin-bottom: 1.5em;"> */
 

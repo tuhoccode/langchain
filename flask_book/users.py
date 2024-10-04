@@ -50,9 +50,9 @@ def Bi_mat_cua_thien_an():
 def Bien_moi_thu_thanh_tien():
     return render_template('Biến Mọi Thứ Thành Tiền - Make Money.html')
 
-@user.route('/Bình Tĩnh Khi Ế, Mạnh Mẽ Khi Yêu')
+@user.route('/Bình Tĩnh Khi Ế Mạnh Mẽ Khi Yêu')
 def Binh_tinh_khi_e():
-    return render_template('Bình Tĩnh Khi Ế, Mạnh Mẽ Khi Yêu.html')
+    return render_template('Bình Tĩnh Khi Ế Mạnh Mẽ Khi Yêu.html')
 
 @user.route('/Bộ Sách Làm Giàu Từ Chứng Khoán')
 def Bo_sach_lam_giau():
@@ -62,9 +62,9 @@ def Bo_sach_lam_giau():
 def Cang_binh_tinh():
     return render_template('Càng Bình Tĩnh Càng Hạnh Phúc (Tái Bản).html')
 
-@user.route('/Càng Kỷ Luật, Càng Tự Do (Tái Bản)')
+@user.route('/Càng Kỷ Luật Càng Tự Do (Tái Bản)')
 def Cang_ki_luat():
-    return render_template('Càng Kỷ Luật, Càng Tự Do (Tái Bản).html')
+    return render_template('Càng Kỷ Luật Càng Tự Do (Tái Bản).html')
 
 @user.route('/Cây Cam Ngọt Của Tôi')
 def Cay_cam_ngot():
@@ -137,7 +137,7 @@ def Hanh_tinh_cua_mot_ke_nghi_nhieu():
 def Hieu_ve_trai_tim():
     return render_template('Hiểu Về Trái Tim (Tái Bản 2023-2024).html')
 
-@user.route('/Hoàn Hảo Ngôn Ngữ Cơ Thể ')
+@user.route('/Hoàn Hảo Ngôn Ngữ Cơ Thể')
 def Hoan_hao_ngon_ngu_co_the():
     return render_template('Hoàn Hảo Ngôn Ngữ Cơ Thể .html')
 
@@ -211,7 +211,7 @@ def Nguoi_dua_dieu():
 
 @user.route('/NgườI Giàu Có Nhất Babylon')
 def Nguoi_giau_co_nhat_babylon():
-    return render_template('NgườI Giàu Có Nhất Babylon.html')
+    return render_template('NgườI Giàu Có Nhất Babylon.html')
 
 @user.route('/Nhà Đầu Tư Thông Minh (Tái Bản 2020-2024)')
 def Nha_dau_tu_thong_minh():
@@ -224,9 +224,9 @@ def Nha_gia_kim():
 def Nhung_tu_nhan_cua_dia_ly():
     return render_template('Những Tù Nhân Của Địa Lý (Tái Bản 2022).html')
 
-@user.route('/Nóng Giận Là Bản Năng, Tĩnh Lặng Là Bản Lĩnh')
+@user.route('/Nóng Giận Là Bản Năng Tĩnh Lặng Là Bản Lĩnh')
 def Nong_gian_la_ban_nang_tinh_lang_la_ban_linh():
-    return render_template('Nóng Giận Là Bản Năng, Tĩnh Lặng Là Bản Lĩnh.html')
+    return render_template('Nóng Giận Là Bản Năng Tĩnh Lặng Là Bản Lĩnh.html')
 
 @user.route('/Pachinko (Tái Bản) (Tái Bản)(Tái Bản)')
 def Pachinko():

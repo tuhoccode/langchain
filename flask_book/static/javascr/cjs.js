@@ -22,12 +22,12 @@ class Carousel {
             // hang 2
             '/Biến Mọi Thứ Thành Tiền - Make Money',
             '/Bí Mật Của Phan Thiên Ân (Tái Bản 2023)',
-            '/Bình Tĩnh Khi Ế, Mạnh Mẽ Khi Yêu',
+            '/Bình Tĩnh Khi Ế Mạnh Mẽ Khi Yêu',
             '/Luyện Thi THPT Quốc Gia Môn Toán',
             '/Bộ Sách Làm Giàu Từ Chứng Khoán',
             '/Càng Bình Tĩnh Càng Hạnh Phúc (Tái Bản)',
             // hang 3
-            '/Càng Kỷ Luật, Càng Tự Do (Tái Bản)',
+            '/Càng Kỷ Luật Càng Tự Do (Tái Bản)',
             '/Cây Cam Ngọt Của Tôi',
             '/Cây Chuối Non Đi Giày Xanh (Bìa Mềm) - 2018',
             '/Chiến Binh Cầu Vồng (Tái Bản 2020)',
@@ -76,8 +76,8 @@ class Carousel {
             '/Nhà Giả Kim (Tái Bản 2020) (Tái Bản)',
             '/Những Tù Nhân Của Địa Lý (Tái Bản 2022)',
             // hang 10
-            '/Nóng Giận Là Bản Năng, Tĩnh Lặng Là Bản Lĩnh',
-            '/Nóng Giận Là Bản Năng, Tĩnh Lặng Là Bản Lĩnh',
+            '/Nóng Giận Là Bản Năng Tĩnh Lặng Là Bản Lĩnh',
+            '/Nóng Giận Là Bản Năng Tĩnh Lặng Là Bản Lĩnh',
             '/Pachinko (Tái Bản) (Tái Bản)(Tái Bản)',
             '/Payback Time - Ngày Đòi Nợ (Tái Bản 2022)',
             '/Sayings Of Youth - Lời Nói Của Thanh Xuân',

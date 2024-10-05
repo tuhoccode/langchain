@@ -1,7 +1,7 @@
-from flask import Blueprint, render_template, request, jsonify
+from flask import Blueprint, render_template, request, jsonify,session
 from flask_book.source_recomment import RecommentBook
+from flask_book import db
 
-# Khởi tạo đối tượng RecommentBook
 recomment_instance = RecommentBook(
     embedding_file='google-bert/bert-base-uncased',
     key='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',
@@ -18,8 +18,11 @@ recomment_instance = RecommentBook(
 
 user = Blueprint('user', __name__)
 
+
+
 @user.route('/')
 def Base():
+    session.permanent = False
     return render_template('base.html')
 
 @user.route('/21 Bài Học Cho Thế Kỷ 21 (Tái Bản)')

@@ -12,3 +12,4 @@ flask
 flask_sqlalchemy
 pandas
 npm
+pymysql

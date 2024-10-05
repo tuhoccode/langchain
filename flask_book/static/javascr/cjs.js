@@ -132,7 +132,7 @@ class Carousel {
         this.carouselItem.push(this.carouselItem.shift());
         this.carouselItemg.push(this.carouselItemg.shift());
         this.bookUrl.push(this.bookUrl.shift());
-        this.currentIndex = 1; // Set to 1 for next (bookUrl[2])
+        this.currentIndex = 1; 
         this.updateItem();
         this.updateItemg();
         this.updateReadLink();
@@ -142,7 +142,7 @@ class Carousel {
         this.carouselItem.unshift(this.carouselItem.pop());
         this.carouselItemg.unshift(this.carouselItemg.pop());
         this.bookUrl.unshift(this.bookUrl.pop());
-        this.currentIndex = 0; // Set to 0 for previous (bookUrl[1])
+        this.currentIndex = 0;
         this.updateItem();
         this.updateItemg();
         this.updateReadLink();
@@ -183,7 +183,7 @@ class Carousel {
     autoslide() {
         setInterval(() => {
             this.setNextState();
-        }, 9000000);
+        }, 300000);
     }
 }
 

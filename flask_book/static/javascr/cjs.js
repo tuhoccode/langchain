@@ -13,9 +13,9 @@ class Carousel {
         this.carouselControl = control;
         this.bookUrl = [
             // hang 1
-            '/Tuổi Trẻ Đáng Giá Bao Nhiêu (Tái Bản 2021)',
             '/21 Bài Học Cho Thế Kỷ 21 (Tái Bản)',
             '/48 Nguyên Tắc Chủ Chốt Của Quyền Lực',
+            '/21 Bài Học Cho Thế Kỷ 21 (Tái Bản)',
             '/Trẻ Thông Minh Nhờ Đúng Đắn Của Cha Mẹ',
             '/999 Lá Thư Gửi Cho Chính Mình (Tái Bản)',
             '/2666 – Roberto Bolaño (Tái Bản 2006)',
@@ -104,6 +104,7 @@ class Carousel {
             '/Trí Tuệ Do Thái (Tái Bản 2022) (Tái Bản)',
             '/Trí Tuệ Do Thái (Tái Bản 2022) (Tái Bản)',
         ,];
+        this.currentIndex = 0;
     }
 
     updateItem() {
@@ -125,19 +126,23 @@ class Carousel {
         this.carouselItemg.slice(0, countItemg).forEach((el, i) => {
             el.classList.add(`itemg-${i + 1}`);
         });
-
     }
 
-    setCurrentState(direction) {
-        if (direction.classList.contains('container-controls-previous')) {
-            this.carouselItem.unshift(this.carouselItem.pop());
-            this.carouselItemg.unshift(this.carouselItemg.pop());
-            this.bookUrl.unshift(this.bookUrl.pop());
-        } else {
-            this.carouselItem.push(this.carouselItem.shift());
-            this.carouselItemg.push(this.carouselItemg.shift());
-            this.bookUrl.push(this.bookUrl.shift());
-        }
+    setNextState() {
+        this.carouselItem.push(this.carouselItem.shift());
+        this.carouselItemg.push(this.carouselItemg.shift());
+        this.bookUrl.push(this.bookUrl.shift());
+        this.currentIndex = 1; // Set to 1 for next (bookUrl[2])
+        this.updateItem();
+        this.updateItemg();
+        this.updateReadLink();
+    }
+
+    setPreviousState() {
+        this.carouselItem.unshift(this.carouselItem.pop());
+        this.carouselItemg.unshift(this.carouselItemg.pop());
+        this.bookUrl.unshift(this.bookUrl.pop());
+        this.currentIndex = 0; // Set to 0 for previous (bookUrl[1])
         this.updateItem();
         this.updateItemg();
         this.updateReadLink();
@@ -157,7 +162,11 @@ class Carousel {
         triggers.forEach(control => {
             control.addEventListener('click', e => {
                 e.preventDefault();
-                this.setCurrentState(control);
+                if (control.classList.contains('container-controls-next')) {
+                    this.setNextState();
+                } else if (control.classList.contains('container-controls-previous')) {
+                    this.setPreviousState();
+                }
             });
         });
     }
@@ -168,18 +177,13 @@ class Carousel {
     }
 
     getCurrentLink() {
-        return this.bookUrl[2] || '#'; 
+        return this.bookUrl[this.currentIndex + 1] || '/Tuổi Trẻ Đáng Giá Bao Nhiêu (Tái Bản 2021)';
     }
 
     autoslide() {
         setInterval(() => {
-            this.carouselItem.push(this.carouselItem.shift());
-            this.carouselItemg.push(this.carouselItemg.shift());
-            this.bookUrl.push(this.bookUrl.shift());
-            this.updateItem();
-            this.updateItemg();
-            this.updateReadLink();
-        },9000000);
+            this.setNextState();
+        }, 9000000);
     }
 }
 

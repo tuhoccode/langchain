@@ -183,7 +183,7 @@ class Carousel {
     autoslide() {
         setInterval(() => {
             this.setNextState();
-        }, 300000);
+        }, 3000);
     }
 }
 

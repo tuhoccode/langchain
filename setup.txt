@@ -13,3 +13,5 @@ flask_sqlalchemy
 pandas
 npm
 pymysql
+Flask-Migrate
+flask-login

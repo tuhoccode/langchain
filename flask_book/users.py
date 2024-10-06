@@ -1,6 +1,7 @@
-from flask import Blueprint, render_template, request, jsonify,session
+from flask import Blueprint, render_template, request, jsonify,session,redirect,url_for,flash
 from flask_book.source_recomment import RecommentBook
 from flask_book import db
+from .data_user import User
 
 recomment_instance = RecommentBook(
     embedding_file='google-bert/bert-base-uncased',
@@ -19,8 +20,11 @@ recomment_instance = RecommentBook(
 user = Blueprint('user', __name__)
 
 
-
 @user.route('/')
+def Log():
+    return redirect(url_for('user.Login'))
+
+@user.route('/base')
 def Base():
     session.permanent = False
     return render_template('base.html')
@@ -323,3 +327,56 @@ def submit():
     summary_to_search = request.form['summary']
     title = recomment_instance.find_title_summary(summary_to_search)
     return jsonify({'title': title})
+
+@user.route('/login', methods=['POST', 'GET'])
+def Login():
+    message = ''
+    if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
+        email = request.form['email']
+        password = request.form['password']
+        
+        user = User.query.filter_by(email=email, password=password).first()
+        
+        if user:
+            session['loggedin'] = True
+            session['user_id'] = user.user_id
+            session['name'] = user.name
+            session['email'] = user.email
+            return render_template('base.html', message=message)
+        else:
+            message = 'Please enter correct credentials.'
+    
+    return render_template('login.html', message=message)
+@user.route('/logout')
+def Logout():
+    session.pop('loggedin', None)
+    session.pop('user_id',None)
+    session.pop('name',None)
+    session.pop('email',None)
+    return redirect(url_for('user.Login'))
+
+@user.route('/register', methods = ['POST','GET'])
+def Register():
+    mesage =''
+    if request.method == 'POST' and 'name' in request.form and 'password' in request.form and 'email' in request.form and 'again_password' in request.form:
+        newname = request.form['name']
+        newpassword = request.form['password']
+        newagainpassword = request.form['again_password']
+        newemail = request.form['email']
+        usered = User.query.filter_by(name = newname,email = newemail).first()
+
+        if usered:
+            mesage = 'email exited'
+        elif newagainpassword != newpassword:
+            mesage = 'nhap lai mat khau'
+        else:
+            newuser = User(name = newname,email = newemail, password=newpassword, again_password=newagainpassword)
+            db.session.add(newuser)
+            db.session.commit()
+            mesage = 'registerd done'
+            return redirect(url_for('user.Login'))
+
+    return render_template('register.html', mesage=mesage)
+
+
+

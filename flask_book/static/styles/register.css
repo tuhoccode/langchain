@@ -1,0 +1,45 @@
+body {
+    background-color: #343a40;
+    font-family: Arial, sans-serif; 
+}
+
+.container {
+    background: linear-gradient(180deg, rgb(236, 213, 232) 0%, rgb(50, 112, 118) 100%);
+    max-width: 400px;
+    margin-top: 100px;
+    padding: 20px;
+    background-color: #ffffff; 
+    border-radius: 8px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-bottom: 20px; 
+    text-align: center; 
+}
+
+.alert {
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px; 
+}
+
+.btn {
+    width: 100%; 
+}
+
+.bottom {
+    text-align: center; 
+    margin-top: 15px;
+}
+
+.bottom a {
+    color: #007bff; 
+    text-decoration: none;
+}
+
+.bottom a:hover {
+    text-decoration: underline; 
+}

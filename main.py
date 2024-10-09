@@ -1,13 +1,14 @@
-from flask_book import Create_app, db
-from os import path
+from flask_book import create_app, db
+import os
 from flask_migrate import Migrate
 
-app = Create_app()
-db_path = "sqlite:////media/anh/428916C82C800CE5/langchain_final/flask_book/user.db"
-migrate = Migrate(app,db)
+app = create_app()
+db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'users.db')
+migrate = Migrate(app, db)
+
 if __name__ == '__main__':
-    if not path.exists(db_path):
-        with app.app_context(): #cho phesp truy cap current_app, request, và session
-            db.create_all() 
-            print("created database")   
-    app.run(debug = True)
+    if not os.path.exists(db_path):
+        with app.app_context():
+            db.create_all()
+            print("Created database")
+    app.run(debug=True) 

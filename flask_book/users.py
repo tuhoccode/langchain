@@ -6,7 +6,7 @@ from .data_user import User
 recomment_instance = RecommentBook(
     embedding_file='google-bert/bert-base-uncased',
     key='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',
-    csv_file='/media/anh/428916C82C800CE5/langchain_final/flask_book/book_genre.csv',
+    csv_file='flask_book/book_genre.csv',
     repo='google/flan-t5-base',
     template="""
     Given the following text, identify and extract the title of the book. The title is typically the first line or a prominent line in the text.

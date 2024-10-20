@@ -580,7 +580,7 @@
   $(document).ready(function() {
       $('#toggleSpan').on('click', function() {
           $(this).toggleClass('active');
-          $('#menu').slideToggle(); // Smooth toggle effect
+          $('#menu').slideToggle(); 
       });
   });
   </script>
@@ -589,28 +589,28 @@
 <script>
   $(document).ready(function() {
       $('#searchForm').on('submit', function(event) {
-          event.preventDefault(); // Ngăn chặn hành động mặc định của biểu mẫu
+          event.preventDefault(); 
 
           $.ajax({
               type: 'POST',
               url: '/submit',
-              data: $(this).serialize(), // Gửi dữ liệu từ biểu mẫu
+              data: $(this).serialize(),
               success: function(response) {
-                  const searchTerm = response.title.toLowerCase(); // Giả sử response trả về title
+                  const searchTerm = response.title.toLowerCase(); 
                   let found = false;
 
                   $('.data-item').each(function() {
                       const cardTitle = $(this).find('.card-title').text().trim().toLowerCase();
 
                       if (cardTitle.includes(searchTerm)) {
-                          $(this).show(); // Hiển thị thẻ nếu tiêu đề khớp
+                          $(this).show(); 
                           found = true;
                       } else {
-                          $(this).hide(); // Ẩn thẻ nếu tiêu đề không khớp
+                          $(this).hide(); 
                       }
                   });
 
-                  if (!found) {$('#result').html('<p>Không tìm thấy tiêu đề nào khớp.</p>'); // Hiển thị thông báo nếu không tìm thấy tiêu đề nào khớp
+                  if (!found) {$('#result').html('<p>Không tìm thấy tiêu đề nào khớp.</p>'); 
                   }
               },
               error: function(xhr, status, error) {

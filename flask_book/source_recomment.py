@@ -57,25 +57,19 @@ class RecommentBook:
     #     return self.summary_title.get(not_query, 'not found title')
 
     def find_title_summary(self, summary):
-            # Thêm tóm tắt người dùng vào danh sách tài liệu
             documents = [summary] + self.data['summary'].tolist()
 
-            # Sử dụng TF-IDF để chuyển đổi văn bản thành vector
             vectorizer = TfidfVectorizer().fit_transform(documents)
             vectors = vectorizer.toarray()
 
-            # Tính toán độ tương đồng cosine giữa tóm tắt người dùng và các tóm tắt trong dữ liệu
             cosine_matrix = cosine_similarity(vectors)
-            similar_indices = cosine_matrix[0][1:]  # Lấy chỉ số độ tương đồng với các tóm tắt khác
+            similar_indices = cosine_matrix[0][1:] 
 
-            # Tìm chỉ số của tóm tắt khớp tốt nhất
             best_match_index = np.argmax(similar_indices)
             best_match_score = similar_indices[best_match_index]
 
-            # Đặt ngưỡng cho độ tương đồng
-            threshold = 0.2  # Ngưỡng có thể điều chỉnh tùy theo yêu cầu
-
-            if best_match_score > threshold:  # Kiểm tra nếu có độ tương đồng
+            threshold = 0.2  
+            if best_match_score > threshold:  
                 matching_summary = self.data['summary'].iloc[best_match_index]
                 return self.summary_title.get(matching_summary, 'not found title')
 

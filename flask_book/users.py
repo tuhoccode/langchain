@@ -1,8 +1,10 @@
 from flask import Blueprint, render_template, request, jsonify,session,redirect,url_for,flash
-from flask_book.source_recomment import RecommentBook
-from flask_book import db
-from .data_user import User
+from flask_book.data_user import User
+import os
+from flask_book.source_recomment import RecommentBook, ImageRecognition
 
+from PIL import Image
+import imagehash
 recomment_instance = RecommentBook(
     embedding_file='google-bert/bert-base-uncased',
     key='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',
@@ -16,7 +18,7 @@ recomment_instance = RecommentBook(
     Title:
     """
 )
-
+image_recognition = ImageRecognition()
 user = Blueprint('user', __name__)
 
 
@@ -321,6 +323,34 @@ def Tuoi_tre_dang_gia_bao_nhieu():
 @user.route('/Underground Railroad')
 def Underground_railroad():
     return render_template('Underground Railroad.html')
+
+# Route xử lý upload ảnh
+@user.route('/upload_image', methods=['POST'])
+def upload_image():
+    if 'image' not in request.files:
+        return jsonify({'error': 'Không có file hình ảnh!'}), 400
+
+    image_file = request.files['image']
+    if image_file.filename == '':
+        return jsonify({'error': 'Không có file hình ảnh!'}), 400
+
+    # Kiểm tra và tạo thư mục 'uploads' nếu chưa tồn tại
+    upload_folder = 'uploads'
+    if not os.path.exists(upload_folder):
+        os.makedirs(upload_folder)
+
+    # Lưu ảnh vào thư mục uploads
+    image_path = os.path.join(upload_folder, image_file.filename)
+    image_file.save(image_path)
+
+    # So sánh ảnh với ảnh trong thư mục images
+    result = recomment_instance.compare_image(image_path)
+    
+    # Xóa ảnh tạm thời sau khi so sánh
+    os.remove(image_path)
+
+    return jsonify({'result': result})
+
 
 @user.route('/submit', methods=['POST'])
 def submit():
